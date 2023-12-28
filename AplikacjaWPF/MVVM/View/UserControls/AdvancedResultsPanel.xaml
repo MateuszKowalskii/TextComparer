@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="AplikacjaWPF.MVVM.View.UserControls.AdvancedResultsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:local="clr-namespace:AplikacjaWPF.MVVM.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid Background="Coral">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="Ivory">
+            <TextBlock x:Name="blSimilarity" FontSize="16" HorizontalAlignment="Center" TextAlignment="Center"
+                       TextWrapping="Wrap" Margin="0,30,0,0"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1" Background="Ivory">
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Algorytmy tekstowe.exe
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Algorytmy tekstowe.deps.json
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Algorytmy tekstowe.runtimeconfig.json
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Algorytmy tekstowe.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Algorytmy tekstowe.pdb
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.csproj.AssemblyReference.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.AssemblyInfoInputs.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.AssemblyInfo.cs
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.csproj.CoreCompileInputs.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\refint\Algorytmy tekstowe.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.pdb
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.genruntimeconfig.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\ref\Algorytmy tekstowe.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Xceed.Wpf.AvalonDock.NET5.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Xceed.Wpf.AvalonDock.Themes.Aero.NET5.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Xceed.Wpf.AvalonDock.Themes.Metro.NET5.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Xceed.Wpf.AvalonDock.Themes.VS2010.NET5.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\Xceed.Wpf.Toolkit.NET5.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\cs-CZ\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\de\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\es\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\fr\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\hu\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\it\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\ja-JP\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\pt-BR\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\ro\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\ru\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\sv\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\bin\Debug\net6.0\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Algorytmy tekstowe\obj\Debug\net6.0\Algorytmy tekstowe.csproj.CopyComplete

@@ -1,0 +1,17 @@
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\bin\Debug\net6.0-windows\Aplikacja.exe
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\bin\Debug\net6.0-windows\Aplikacja.deps.json
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\bin\Debug\net6.0-windows\Aplikacja.runtimeconfig.json
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\bin\Debug\net6.0-windows\Aplikacja.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\bin\Debug\net6.0-windows\Aplikacja.pdb
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.csproj.AssemblyReference.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.mainForm.resources
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.csproj.GenerateResource.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.AssemblyInfoInputs.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.AssemblyInfo.cs
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.csproj.CoreCompileInputs.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\refint\Aplikacja.dll
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.pdb
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\Aplikacja.genruntimeconfig.cache
+C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\Aplikacja\obj\Debug\net6.0-windows\ref\Aplikacja.dll

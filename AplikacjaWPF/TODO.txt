@@ -1,0 +1,23 @@
+﻿Najpilniejsze:
+
+* dodać ikonki małego menu
+
+
+Mniej pilne:
+
+* tryb liczby znaków się różniących
+* posprzątać kod i go ujednolicić X
+
+Błędy:
+
+* otwieranie dużych plików może trwać długo - dodać współbieżność gdzie trzeba 
+* w wordzie odczytywana "linia" to tekst od entera do entera co może być całym akapitem 
+
+Testy:
+
+* różne wyniki dla różnych algorytmów na tym samym tekście
+* testy dla wszystkich uzywanych rozszerzeń
+
+Być może:
+
+* dodać możliwość nadpisywania plików
