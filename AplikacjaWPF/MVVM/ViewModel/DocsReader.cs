@@ -1,14 +1,16 @@
-﻿using View;
-using ICSharpCode.AvalonEdit;
+﻿using ICSharpCode.AvalonEdit;
 using Prism.Commands;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using View;
 using Xceed.Words.NET;
 
-namespace ViewModel { 
+namespace ViewModel
+{
     public class DocsReader
     {
         public DelegateCommand<string> OpenFileCommand { get; }
@@ -16,8 +18,12 @@ namespace ViewModel {
 
         public DocsReader(MainWindow mainWindow)
         {
-            OpenFileCommand = new DelegateCommand<string>(OpenNewFile);
+            OpenFileCommand = new DelegateCommand<string>(async (side) => await OpenNewFileAsync(side));
             this.mainWindow = mainWindow;
+        }
+        private async Task OpenNewFileAsync(string side)
+        {
+            await Task.Run(() => OpenNewFile(side));
         }
         private void OpenNewFile(string side)
         {
@@ -32,8 +38,11 @@ namespace ViewModel {
                 {
                     if (doc != null)
                     {
-                        tbText.Text = string.Join(Environment.NewLine, doc.Paragraphs.Select(p => p.Text));
-                        tbPath.Text = filePath;
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {            
+                            tbText.Text = string.Join(Environment.NewLine, doc.Paragraphs.Select(p => p.Text));
+                            tbPath.Text = filePath;
+                        });
                     }
                 }
             }
@@ -42,8 +51,8 @@ namespace ViewModel {
                 MessageBox.Show("Plik jest już otwarty w innym edytorze. Zamknij go jeśli chcesz otworzyć ten plik.",
                     "Błąd otwarcia pliku", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch(Exception) 
-            { 
+            catch (Exception)
+            {
                 MessageBox.Show("Nie udało się otworzyć pliku",
                     "Błąd otwarcia pliku", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -61,6 +70,8 @@ namespace ViewModel {
 
             if (success == true)
             {
+                Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Visible);
+
                 var fileName = fileDialog.FileName;
                 FileInfo fileInfo = new(fileName);
                 string extension = fileInfo.Extension;
@@ -79,11 +90,14 @@ namespace ViewModel {
                 }
                 else
                 {
-                    tbPath.Text = fileName;
-                    tbText.Text = File.ReadAllText(fileName, Encoding.UTF8);
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        tbPath.Text = fileName;
+                        tbText.Text = File.ReadAllText(fileName, Encoding.UTF8);
+                    });
                 }
+                Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Collapsed);
             }
         }
     }
 }
-

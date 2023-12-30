@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        
         xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         
         xmlns:local="clr-namespace:AplikacjaWPF.MVVM.View.UserControls"
@@ -40,21 +41,17 @@
             <!-- First of inner Menus in this grid. This one gives to user main functions of the app to use -->
             <Menu Grid.ColumnSpan="4" Grid.Row="0" Background="LightGray">
                 <MenuItem Header="Plik" FontSize="16" Height="35">
-                    <MenuItem Header="Nowe porównanie" FontSize="14"></MenuItem>
-                    <MenuItem Header="Zamknij porównanie" FontSize="14"></MenuItem>
-                    <MenuItem Header="Zamknij wszystkie porównania" FontSize="14"></MenuItem>
-                    <Separator />
                     <MenuItem Header="Nowy plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L"></MenuItem>
                     <MenuItem Header="Nowy plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R"></MenuItem>
-                    <Separator />
-                    <MenuItem Header="Zapisz" FontSize="14"></MenuItem>
-                    <MenuItem Header="Zapisz jako" FontSize="14"></MenuItem>
-                    <MenuItem Header="Zapisz wszystko" FontSize="14"></MenuItem>
                     <Separator />
                     <MenuItem Header="Zamknij" FontSize="14" Command="{Binding CloseCommand}"></MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="Edytuj" FontSize="16"></MenuItem>
+                <MenuItem Header="Edytuj" FontSize="16">
+                    <MenuItem Header="Kopiuj" FontSize="14" Command="{Binding CopyCommand}"></MenuItem>
+                    <MenuItem Header="Wklej" FontSize="14" Command="{Binding PasteCommand}"></MenuItem>
+                    <MenuItem Header="Wytnij" FontSize="14" Command="{Binding CutCommand}"></MenuItem>
+                </MenuItem>
 
                 <MenuItem Header="Widok" FontSize="16">
                     <MenuItem Header="Czcionka" FontSize="14">
@@ -151,6 +148,14 @@
             </Grid.RowDefinitions>
 
             <Rectangle Grid.Row="0" Fill="LightGray"></Rectangle>
+
+            <ProgressBar x:Name="progressBar" IsIndeterminate="True" Visibility="Collapsed"
+                         Height="8" Width="120" VerticalAlignment="Top" Margin="0,40,0,0">
+                <ProgressBar.Foreground>
+                    <SolidColorBrush Color="#124862"/>
+                </ProgressBar.Foreground>
+            </ProgressBar>
+
 
             <TextBlock x:Name="blAlgorythm" Text="Wybrany algorytm:&#xA;Jaro" Height="70" FontSize="16" 
                         VerticalAlignment="Bottom" Margin="8,0,8,260" TextAlignment="Center"></TextBlock>

@@ -1,10 +1,8 @@
-﻿using View;
+﻿using ICSharpCode.AvalonEdit.Highlighting;
 using Prism.Commands;
 using Prism.Mvvm;
-using System.Data;
-using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit;
 using System.Windows.Controls;
+using View;
 
 namespace ViewModel
 {

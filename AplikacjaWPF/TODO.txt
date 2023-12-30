@@ -6,11 +6,11 @@
 Mniej pilne:
 
 * tryb liczby znaków się różniących
-* posprzątać kod i go ujednolicić X
+* odległość Levenhsteina zwracać
+* obsługa ctrl+a, delete, undo, redo
 
 Błędy:
 
-* otwieranie dużych plików może trwać długo - dodać współbieżność gdzie trzeba 
 * w wordzie odczytywana "linia" to tekst od entera do entera co może być całym akapitem 
 
 Testy:

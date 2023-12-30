@@ -62,8 +62,7 @@ namespace AplikacjaWPF.MVVM.View.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AplikacjaWPF;V1.0.0.0;component/mvvm/view/usercontrols/advancedresultspanel.xaml" +
-                    "", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AplikacjaWPF;component/mvvm/view/usercontrols/advancedresultspanel.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\MVVM\View\UserControls\AdvancedResultsPanel.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

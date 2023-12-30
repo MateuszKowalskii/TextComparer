@@ -1,5 +1,5 @@
-﻿using View;
-using Prism.Commands;
+﻿using Prism.Commands;
+using View;
 
 namespace ViewModel
 {
@@ -35,6 +35,12 @@ namespace ViewModel
         public DelegateCommand<string> OpenFileCommand => DocsReader.OpenFileCommand;
         public DocsReader DocsReader { get; }
 
+        //EditOptions
+        public DelegateCommand CopyCommand => EditOptions.CopyCommand;
+        public DelegateCommand PasteCommand => EditOptions.PasteCommand;
+        public DelegateCommand CutCommand => EditOptions.CutCommand;
+        public EditOperator EditOptions { get; }
+
 
         private MainWindow mainWindow;
 
@@ -44,7 +50,8 @@ namespace ViewModel
             OperationsViewer = new OperationsViewer(this.mainWindow);
             WindowStateEditor = new WindowStateEditor(this.mainWindow);
             ComparationExecutor = new ComparationExecutor(this.mainWindow);
-            DocsReader = new DocsReader(this.mainWindow);       
+            DocsReader = new DocsReader(this.mainWindow);
+            EditOptions = new EditOperator(this.mainWindow);
         }
     }
 }

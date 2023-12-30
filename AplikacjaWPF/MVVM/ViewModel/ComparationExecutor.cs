@@ -1,9 +1,10 @@
-﻿using View;
+﻿using MathNet.Numerics;
 using Model;
-using MathNet.Numerics;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.Windows;
 using System.Windows.Controls;
+using View;
 
 namespace ViewModel
 {
@@ -19,6 +20,7 @@ namespace ViewModel
 
         private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenhstein };
         private enum Mode { SignNumber, Percentage, Absolute};
+
         private static int currentAlgorythm = (int)Algorythm.Jaro;
         private static int currentMode = (int)Mode.Percentage;
         private MainWindow mainWindow;
@@ -33,7 +35,7 @@ namespace ViewModel
         {
             ChangeAlgorythmCommand = new DelegateCommand<string>(ChangeCurrentAlgorythm);
             ChangeModeCommand = new DelegateCommand<string>(ChangeCurrentMode);
-            ExecuteCommand = new DelegateCommand(ExecuteAlgorythm);
+            ExecuteCommand = new DelegateCommand(async () => await ExecuteAlgorythmAsync());
 
             IgnoreSizesCommand = new DelegateCommand(
                 () => { differSignSizes = !differSignSizes; });
@@ -77,48 +79,58 @@ namespace ViewModel
             advancedResults = !advancedResults;
             if(advancedResults == true)
             {
-                mainWindow.btnAdvancedResults.Visibility = System.Windows.Visibility.Visible;
+                mainWindow.btnAdvancedResults.Visibility = Visibility.Visible;
                 mainWindow.btnAdvancedResults.IsEnabled = true;
             }
             else
             {
-                mainWindow.resultsPanel.Visibility = System.Windows.Visibility.Hidden;
-                mainWindow.btnAdvancedResults.Visibility = System.Windows.Visibility.Hidden;
+                mainWindow.resultsPanel.Visibility = Visibility.Hidden;
+                mainWindow.btnAdvancedResults.Visibility = Visibility.Hidden;
                 mainWindow.btnAdvancedResults.IsEnabled = false;
             }
         }
 
-        public void ExecuteAlgorythm()
+        private async System.Threading.Tasks.Task ExecuteAlgorythmAsync()
+        {
+            await System.Threading.Tasks.Task.Run(() => ExecuteAlgorythm());
+        }
+        private void ExecuteAlgorythm()
         {
             double result = 0;
+            Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Visible);
 
-            string leftString = TextPreparator.PrepareTexts(mainWindow.LeftTextBox.Text,
-                differSignSizes, ignoreWhitespaces, ignorePunctation);
-            string rightString = TextPreparator.PrepareTexts(mainWindow.RightTextBox.Text,
-                differSignSizes, ignoreWhitespaces, ignorePunctation);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                string leftString = TextPreparator.PrepareTexts(mainWindow.LeftTextBox.Text,
+                    differSignSizes, ignoreWhitespaces, ignorePunctation);
+                string rightString = TextPreparator.PrepareTexts(mainWindow.RightTextBox.Text,
+                    differSignSizes, ignoreWhitespaces, ignorePunctation);
 
-            if (string.IsNullOrEmpty(leftString) && string.IsNullOrEmpty(rightString))
-                result = 1;
-            else if (string.IsNullOrEmpty(leftString) || string.IsNullOrEmpty(rightString))
-                result = 0;
-            else if (currentAlgorythm == (int)Algorythm.Jaro)
-                result = JaroWinkler.JaroDistance(leftString, rightString);
-            else if (currentAlgorythm == (int)Algorythm.JaroWinkler) 
-                result = JaroWinkler.JaroWinklerDistance(leftString, rightString);
-            else if (currentAlgorythm == (int)Algorythm.Jaccard)
-                result = Jaccard.JaccardDistance(leftString, rightString);
-            else if (currentAlgorythm == (int)Algorythm.Levenhstein) 
-                result = Levenshtein.LevenshteinDistance(leftString, rightString);
+                if (string.IsNullOrEmpty(leftString) && string.IsNullOrEmpty(rightString))
+                    result = 1;
+                else if (string.IsNullOrEmpty(leftString) || string.IsNullOrEmpty(rightString))
+                    result = 0;
+                else if (currentAlgorythm == (int)Algorythm.Jaro)
+                    result = JaroWinkler.JaroDistance(leftString, rightString);
+                else if (currentAlgorythm == (int)Algorythm.JaroWinkler)
+                    result = JaroWinkler.JaroWinklerDistance(leftString, rightString);
+                else if (currentAlgorythm == (int)Algorythm.Jaccard)
+                    result = Jaccard.JaccardDistance(leftString, rightString);
+                else if (currentAlgorythm == (int)Algorythm.Levenhstein)
+                    result = Levenshtein.LevenshteinDistance(leftString, rightString);
 
-            result = result.Round(3);
-            if (result >= 0.8) mainWindow.resultsPanel.blSimilarity.Text = "Porównywane teksty MOŻNA uznać za takie same";
-            else mainWindow.resultsPanel.blSimilarity.Text = "Porównywanych tekstów NIE MOŻNA uznać za takie same";
+                result = result.Round(3);
+                if (result >= 0.8) mainWindow.resultsPanel.blSimilarity.Text = "Porównywane teksty MOŻNA uznać za takie same";
+                else mainWindow.resultsPanel.blSimilarity.Text = "Porównywanych tekstów NIE MOŻNA uznać za takie same";
 
-            if (currentMode == (int)Mode.SignNumber);
-            else if (currentMode == (int)Mode.Percentage)
-                mainWindow.ResultsBlock.Text = "Podobieństwo\nprocentowe:\n" + (result * 100).Round(3).ToString() + "%";
-            else if (currentMode == (int)Mode.Absolute)
-                mainWindow.ResultsBlock.Text = "Podobieństwo\nbezwzględne:\n" + result.Round(3).ToString();
+                if (currentMode == (int)Mode.SignNumber) ;
+                else if (currentMode == (int)Mode.Percentage)
+                    mainWindow.ResultsBlock.Text = "Podobieństwo\nprocentowe:\n" + (result * 100).Round(3).ToString() + "%";
+                else if (currentMode == (int)Mode.Absolute)
+                    mainWindow.ResultsBlock.Text = "Podobieństwo\nbezwzględne:\n" + result.Round(3).ToString();
+            });
+
+            Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Hidden);
         }
     }
 }
