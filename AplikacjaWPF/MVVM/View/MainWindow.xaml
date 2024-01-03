@@ -27,6 +27,8 @@
         <Grid Height="25" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown">
             <Rectangle Fill="#124862">
             </Rectangle>
+            <Image Source="../../Images/LOGO.png" HorizontalAlignment="Left" Panel.ZIndex="2"
+                   RenderOptions.BitmapScalingMode="HighQuality" ></Image>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="btnMinimize" Content="🗕" Width="25" BorderBrush="Transparent" Background="Transparent"
                         Command="{Binding MinimizeCommand}" Foreground="White" FontSize="14" VerticalContentAlignment="Stretch"></Button>
@@ -46,76 +48,103 @@
 
             <!-- First of inner Menus in this grid. This one gives to user main functions of the app to use -->
             <Menu Grid.ColumnSpan="4" Grid.Row="0" Background="LightGray">
+                <Menu.Resources>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                </Menu.Resources>
                 <MenuItem Header="Plik" FontSize="16" Height="35">
-                    <MenuItem Header="Nowy plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L" InputGestureText="Ctrl+L"></MenuItem>
-                    <MenuItem Header="Nowy plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R" InputGestureText="Ctrl+R"></MenuItem>
+                    <MenuItem Header="Nowy plik w lewym oknie" Command="{Binding OpenFileCommand}" CommandParameter="L" InputGestureText="Ctrl+L"></MenuItem>
+                    <MenuItem Header="Nowy plik w prawym oknie" Command="{Binding OpenFileCommand}" CommandParameter="R" InputGestureText="Ctrl+R"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Dodaj plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L+"></MenuItem>
-                    <MenuItem Header="Dodaj plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R+"></MenuItem>
+                    <MenuItem Header="Dodaj plik w lewym oknie" Command="{Binding OpenFileCommand}" CommandParameter="L+"></MenuItem>
+                    <MenuItem Header="Dodaj plik w prawym oknie" Command="{Binding OpenFileCommand}" CommandParameter="R+"></MenuItem>
                     <Separator />
-                    <MenuItem Header="Zamknij" FontSize="14" Command="{Binding CloseCommand}"></MenuItem>
+                    <MenuItem Header="Zamknij" Command="{Binding CloseCommand}"></MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="Edytuj" FontSize="16">
-                    <MenuItem Header="Kopiuj" FontSize="14" Command="{Binding CopyCommand}" InputGestureText="Ctrl+C"></MenuItem>
-                    <MenuItem Header="Usuń" FontSize="14" Command="{Binding DeleteCommand}" InputGestureText="Delete"></MenuItem>
-                    <MenuItem Header="Usuń wiersz" FontSize="14" Command="{Binding DeleteRowCommand}" InputGestureText="Ctrl+D"></MenuItem>
-                    <MenuItem Header="Wklej" FontSize="14" Command="{Binding PasteCommand}" InputGestureText="Ctrl+V"></MenuItem>
-                    <MenuItem Header="Wytnij" FontSize="14" Command="{Binding CutCommand}" InputGestureText="Ctrl+X"></MenuItem>
-                    <MenuItem Header="Zaznacz wszystko" FontSize="14" Command="{Binding SelectAllCommand}" InputGestureText="Ctrl+A"></MenuItem>
+                    <MenuItem Header="Kopiuj" Command="{Binding CopyCommand}" InputGestureText="Ctrl+C"></MenuItem>
+                    <MenuItem Header="Usuń" Command="{Binding DeleteCommand}" InputGestureText="Delete"></MenuItem>
+                    <MenuItem Header="Usuń wiersz" Command="{Binding DeleteRowCommand}" InputGestureText="Ctrl+D"></MenuItem>
+                    <MenuItem Header="Wklej" Command="{Binding PasteCommand}" InputGestureText="Ctrl+V"></MenuItem>
+                    <MenuItem Header="Wytnij" Command="{Binding CutCommand}" InputGestureText="Ctrl+X"></MenuItem>
+                    <MenuItem Header="Zaznacz wszystko" Command="{Binding SelectAllCommand}" InputGestureText="Ctrl+A"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Cofnij" FontSize="14" Command="{Binding UndoCommand}" InputGestureText="Ctrl+Z"/>
-                    <MenuItem Header="Wykonaj ponownie" FontSize="14" Command="{Binding RedoCommand}" InputGestureText="Ctrl+Y"/>
-
+                    <MenuItem Header="Cofnij" Command="{Binding UndoCommand}" InputGestureText="Ctrl+Z"/>
+                    <MenuItem Header="Wykonaj ponownie" Command="{Binding RedoCommand}" InputGestureText="Ctrl+Y"/>
                 </MenuItem>
 
                 <MenuItem Header="Widok" FontSize="16">
-                    <MenuItem Header="Czcionka" FontSize="14">
+                    <MenuItem Header="Czcionka">
                         <MenuItem Header="Zwiększ" Command="{Binding IncreaseFontCommand}"></MenuItem>
                         <MenuItem Header="Zmniejsz" Command="{Binding DecreaseFontCommand}"></MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Pokaż numery linii" FontSize="14" Command="{Binding ShowLineNumbersCommand}" IsCheckable="True" 
+                    <MenuItem Header="Pokaż numery linii" Command="{Binding ShowLineNumbersCommand}" IsCheckable="True" 
                               IsChecked="True"></MenuItem>
-                    <MenuItem Header="Zamień lewy z prawym" FontSize="14" Command="{Binding SwapCommand}"></MenuItem>
-                    <MenuItem Header="Zaznacz słowa kluczowe dla języka" FontSize="14">
-                        <MenuItem Name="TEXT" Header="Standardowy tekst" IsChecked="True" Command="{Binding HighlightCommand}" CommandParameter="0"></MenuItem>
+                    <MenuItem Header="Zamień lewy z prawym" Command="{Binding SwapCommand}"></MenuItem>
+                    <MenuItem Header="Zaznacz słowa kluczowe dla języka" IsCheckable="False">
+                        <MenuItem.Resources>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="IsCheckable" Value="True"/>
+                                <Setter Property="FontSize" Value="14"/>
+                            </Style>
+                        </MenuItem.Resources>
+                        <MenuItem Name="TEXT" Header="Standardowy tekst" Command="{Binding HighlightCommand}" CommandParameter="0"></MenuItem>
                         <Separator/>
-                        <MenuItem Name="CSS" Header="CSS" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="1"></MenuItem>
-                        <MenuItem Name="CS" Header="C#" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="2"></MenuItem>
-                        <MenuItem Name="HTML" Header="HTML" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="3"></MenuItem>
-                        <MenuItem Name="JAVA" Header="Java" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="4"></MenuItem>
-                        <MenuItem Name="JS" Header="JavaScript" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="5"></MenuItem>
-                        <MenuItem Name="PY" Header="Python" IsCheckable="True" Command="{Binding HighlightCommand}" CommandParameter="6"></MenuItem>
+                        <MenuItem Name="CSS" Header="CSS" Command="{Binding HighlightCommand}" CommandParameter="1"></MenuItem>
+                        <MenuItem Name="CS" Header="C#" Command="{Binding HighlightCommand}" CommandParameter="2"></MenuItem>
+                        <MenuItem Name="HTML" Header="HTML" Command="{Binding HighlightCommand}" CommandParameter="3"></MenuItem>
+                        <MenuItem Name="JAVA" Header="Java" Command="{Binding HighlightCommand}" CommandParameter="4"></MenuItem>
+                        <MenuItem Name="JS" Header="JavaScript" Command="{Binding HighlightCommand}" CommandParameter="5"></MenuItem>
+                        <MenuItem Name="PY" Header="Python" Command="{Binding HighlightCommand}" CommandParameter="6"></MenuItem>
                     </MenuItem>
                     <Separator/>
-                    <MenuItem Header="Wyczyść lewe pole tekstowe" FontSize="14" Command="{Binding ClearCommand}" CommandParameter="L"></MenuItem>
-                    <MenuItem Header="Wyczyść prawe pole tekstowe" FontSize="14" Command="{Binding ClearCommand}" CommandParameter="R"></MenuItem>
+                    <MenuItem Header="Wyczyść lewe pole tekstowe" Command="{Binding ClearCommand}" CommandParameter="L"></MenuItem>
+                    <MenuItem Header="Wyczyść prawe pole tekstowe" Command="{Binding ClearCommand}" CommandParameter="R"></MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="Algorytmy" FontSize="16">
-                    <MenuItem Header="Jaro" Name="Jaro" FontSize="14" IsCheckable="True"  Command="{Binding ChangeAlgorythmCommand}" CommandParameter="0" IsChecked="True"></MenuItem>
-                    <MenuItem Header="Jaro-Winklera" Name="JaroWinkler"  FontSize="14" IsCheckable="True" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="1"></MenuItem>
-                    <MenuItem Header="Jaccarda" Name="Jaccard"  FontSize="14" IsCheckable="True" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="2"></MenuItem>
-                    <MenuItem Header="Levenhsteina" Name="Levenhstein"  FontSize="14" IsCheckable="True" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="3"></MenuItem>
+                <MenuItem Header="Algorytmy" FontSize="16" IsCheckable="False">
+                    <MenuItem.Resources>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="IsCheckable" Value="True"/>
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </MenuItem.Resources>
+                    <MenuItem Header="Jaro" Name="Jaro" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="0" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Jaro-Winklera" Name="JaroWinkler" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="1"></MenuItem>
+                    <MenuItem Header="Jaccarda" Name="Jaccard" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="2"></MenuItem>
+                    <MenuItem Header="Levenhsteina" Name="Levenhstein" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="3"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Rozróżniaj małe i duże znaki" FontSize="14" IsCheckable="True" Command="{Binding IgnoreSizesCommand}"></MenuItem>
-                    <MenuItem Header="Pomiń białe znaki" FontSize="14" IsCheckable="True" Command="{Binding IgnoreWhitespacesCommand}" IsChecked="True"></MenuItem>
-                    <MenuItem Header="Pomiń znaki interpunkcyjne" FontSize="14" IsCheckable="True" Command="{Binding IgnorePunctationCommand}"></MenuItem>
+                    <MenuItem Header="Rozróżniaj małe i duże znaki" Command="{Binding IgnoreSizesCommand}"></MenuItem>
+                    <MenuItem Header="Pomiń białe znaki" Command="{Binding IgnoreWhitespacesCommand}" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Pomiń znaki interpunkcyjne" Command="{Binding IgnorePunctationCommand}"></MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="Wyniki" FontSize="16">
-                    <MenuItem Header="Liczba znaków" Name="SignNumber" FontSize="14" IsCheckable="True" Command="{Binding ChangeModeCommand}" CommandParameter="0"></MenuItem>
-                    <MenuItem Header="Procentowo" Name="Percentage" FontSize="14" IsCheckable="True" Command="{Binding ChangeModeCommand}" CommandParameter="1" IsChecked="True"></MenuItem>
-                    <MenuItem Header="Wartość bezwzględna" Name="Absolute" FontSize="14" IsCheckable="True" Command="{Binding ChangeModeCommand}" CommandParameter="2"></MenuItem>
+                <MenuItem Header="Wyniki" FontSize="16" IsCheckable="False">
+                    <MenuItem.Resources>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="IsCheckable" Value="True"/>
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </MenuItem.Resources>
+                    <MenuItem Header="Liczba znaków" Name="SignNumber" Command="{Binding ChangeModeCommand}" CommandParameter="0"></MenuItem>
+                    <MenuItem Header="Procentowo" Name="Percentage" Command="{Binding ChangeModeCommand}" CommandParameter="1" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Wartość bezwzględna" Name="Absolute" Command="{Binding ChangeModeCommand}" CommandParameter="2"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Zaznacz różnice" FontSize="14"></MenuItem>
+                    <MenuItem Header="Zaznacz różnice"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Rozszerzone menu wyników" Name="AdvancedResults" FontSize="14" IsCheckable="True" Command="{Binding AdvancedResultsCommand}" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Rozszerzone menu wyników" Name="AdvancedResults" Command="{Binding AdvancedResultsCommand}" IsChecked="True"></MenuItem>
                 </MenuItem>
             </Menu>
 
             <!-- Second of inner Menus of this grid. Contains a collection of iconn-buttons representing most imprtant functions of the menu above -->
             <Menu Grid.ColumnSpan="4" Grid.Row="1">
+                <Menu.Resources>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Width" Value="30"/>
+                    </Style>
+                </Menu.Resources>
                 <MenuItem Command="{Binding OpenFileCommand}" CommandParameter="L">
                     <MenuItem.Header>
                         <Image Source="../../Images/newLeftFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
@@ -147,7 +176,25 @@
                     <MenuItem.Header>
                         <Image Source="../../Images/addRightFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
                             <Image.ToolTip>
-                                Dodaj plik w prawym oknie
+                                Wykonaj ponownie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding UndoCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/undoArrow.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Cofnij
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding RedoCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/redoArrow.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Zamień lewy z prawym
                             </Image.ToolTip>
                         </Image>
                     </MenuItem.Header>

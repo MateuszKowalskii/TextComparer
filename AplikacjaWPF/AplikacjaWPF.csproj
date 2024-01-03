@@ -15,9 +15,12 @@
     <None Remove="Images\decreaseFont.png" />
     <None Remove="Images\increaseFont.png" />
     <None Remove="Images\lineNumbers.png" />
+    <None Remove="Images\LOGO.png" />
     <None Remove="Images\newLeftFile.png" />
     <None Remove="Images\newRightFile.png" />
+    <None Remove="Images\redoArrow.png" />
     <None Remove="Images\swap.png" />
+    <None Remove="Images\undoArrow.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,13 +48,16 @@
     <Resource Include="Images\decreaseFont.png" />
     <Resource Include="Images\increaseFont.png" />
     <Resource Include="Images\lineNumbers.png" />
+    <Resource Include="Images\LOGO.png" />
     <Resource Include="Images\newRightFile.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\newLeftFile.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\redoArrow.png" />
     <Resource Include="Images\swap.png" />
+    <Resource Include="Images\undoArrow.png" />
   </ItemGroup>
 
 </Project>

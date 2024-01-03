@@ -1,10 +1,19 @@
 ﻿Wszelkie obrazy zostły pozyskane ze strony https://www.flaticon.com/
 
+Logo aplikacji zostało wygenerowane przy użyciu narzędzia spod tego adresu:
+https://deepai.org/machine-learning-model/text2img
+
 Ikonka nowego pliku:
 https://www.flaticon.com/free-icon/new-document_1155674?term=new+file&page=1&position=1&origin=search&related_id=1155674
 
 Czarna ikonka nowego pliku:
 https://www.flaticon.com/free-icon/number_1828018?term=line+numbers&page=1&position=7&origin=search&related_id=1828018
+
+Ikonka "undo":
+https://www.flaticon.com/free-icon/undo-circular-arrow_44426?term=undo&page=1&position=2&origin=search&related_id=44426
+
+Ikonka "redo":
+https://www.flaticon.com/free-icon/redo-arrow-symbol_44650?term=redo&page=1&position=1&origin=search&related_id=44650
 
 Ikonka "swap":
 https://www.flaticon.com/free-icon/swap_318147?term=swap&page=1&position=8&origin=search&related_id=318147

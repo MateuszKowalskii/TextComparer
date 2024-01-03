@@ -1,8 +1,6 @@
 ﻿Najpilniejsze:
 
 * dodać ikonki małego menu X
-* logo apki
-
 
 Mniej pilne:
 
@@ -13,6 +11,9 @@ Mniej pilne:
 Błędy:
 
 * w wordzie odczytywana "linia" to tekst od entera do entera co może być całym akapitem 
+* undo/redo tak nie przywracają po wyczyszczeniu
+
+*******************************************************************
 
 Testy:
 
@@ -21,4 +22,3 @@ Testy:
 
 Może:
 * dodać jakieś algorytmy jeszcze
-* ustawienia personalne
