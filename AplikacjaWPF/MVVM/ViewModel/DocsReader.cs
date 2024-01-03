@@ -27,10 +27,13 @@ namespace ViewModel
         }
         private void OpenNewFile(string side)
         {
-            if (side == "L") NewFile(mainWindow.leftFilePath, mainWindow.leftTextBox);
-            else if (side == "R") NewFile(mainWindow.rightFilePath, mainWindow.rightTextBox);
+            bool add = false;
+            if (side == "L+" || side == "R+") add = true;
+
+            if (side[0] == 'L') NewFile(mainWindow.leftFilePath, mainWindow.leftTextBox, add);
+            else if (side[0] == 'R') NewFile(mainWindow.rightFilePath, mainWindow.rightTextBox, add);
         }
-        private void ReadDocxFile(string filePath, System.Windows.Controls.TextBox tbPath, TextEditor tbText)
+        private void ReadDocxFile(string filePath,TextEditor tbText)
         {
             try
             {
@@ -40,8 +43,7 @@ namespace ViewModel
                     {
                         Application.Current.Dispatcher.Invoke(() =>
                         {            
-                            tbText.Text = string.Join(Environment.NewLine, doc.Paragraphs.Select(p => p.Text));
-                            tbPath.Text = filePath;
+                            tbText.Text += string.Join(Environment.NewLine, doc.Paragraphs.Select(p => p.Text));
                         });
                     }
                 }
@@ -59,7 +61,7 @@ namespace ViewModel
         }
 
 
-        public void NewFile(System.Windows.Controls.TextBox tbPath, TextEditor tbText)
+        public void NewFile(System.Windows.Controls.TextBox tbPath, TextEditor tbText, bool add)
         {
             Microsoft.Win32.OpenFileDialog fileDialog = new();
             fileDialog.Filter = "Wszystkie|*.txt;*.docx;*.css;*.html;*.js;*.py;*.cs;*.java|Pliki tekstowe txt|*.txt|Pliki docx|*.docx" +
@@ -76,6 +78,18 @@ namespace ViewModel
                 FileInfo fileInfo = new(fileName);
                 string extension = fileInfo.Extension;
 
+                Application.Current.Dispatcher.Invoke(() => {
+                    if (add == false) {
+                        tbPath.Text = fileName;
+                        tbText.Text = string.Empty;
+                    }
+                    else
+                    {
+                        if (tbPath.Text == string.Empty) tbPath.Text = fileName;
+                        else tbPath.Text += " & " + fileName;
+                    }
+                });
+
                 long maxSizeInBytes = 1L * 1024 * 1024 * 1024;
                 if (fileInfo.Length > maxSizeInBytes)
                 {
@@ -86,14 +100,13 @@ namespace ViewModel
 
                 if (extension == ".docx")
                 {
-                    ReadDocxFile(fileName, tbPath, tbText);
+                    ReadDocxFile(fileName, tbText);
                 }
                 else
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        tbPath.Text = fileName;
-                        tbText.Text = File.ReadAllText(fileName, Encoding.UTF8);
+                        tbText.Text += File.ReadAllText(fileName, Encoding.UTF8);
                     });
                 }
                 Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Collapsed);

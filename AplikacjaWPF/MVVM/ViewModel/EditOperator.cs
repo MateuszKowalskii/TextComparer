@@ -1,24 +1,37 @@
 ﻿using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Search;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows;
 using System.Windows.Input;
 using View;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ViewModel
 {
     public class EditOperator : BindableBase
     {
         public DelegateCommand CopyCommand { get; }
+        public DelegateCommand DeleteCommand { get; }
+        public DelegateCommand DeleteRowCommand { get; }
         public DelegateCommand PasteCommand { get; }
         public DelegateCommand CutCommand { get; }
+        public DelegateCommand SelectAllCommand { get; }
+        public DelegateCommand UndoCommand { get; }
+        public DelegateCommand RedoCommand { get; }
+
         private MainWindow mainWindow;
 
         public EditOperator(MainWindow mainWindow)
         {
             CopyCommand = new DelegateCommand(Copy);
+            DeleteCommand = new DelegateCommand(Delete);
+            DeleteRowCommand = new DelegateCommand(DeleteRow);
             PasteCommand = new DelegateCommand(Paste);
             CutCommand = new DelegateCommand(Cut);
+            SelectAllCommand = new DelegateCommand(SelectAll);
+            UndoCommand = new DelegateCommand(Undo);
+            RedoCommand = new DelegateCommand(Redo);
             this.mainWindow = mainWindow;
         }
 
@@ -33,6 +46,36 @@ namespace ViewModel
             else if (!string.IsNullOrEmpty(mainWindow.rightTextBox.SelectedText))
             {
                 Clipboard.SetText(mainWindow.rightTextBox.SelectedText);
+            }
+        }
+
+        private void Delete()
+        {
+            if (!string.IsNullOrEmpty(mainWindow.leftTextBox.SelectedText))
+            {
+                mainWindow.leftTextBox.SelectedText = string.Empty;
+            }
+            else if (!string.IsNullOrEmpty(mainWindow.rightTextBox.SelectedText))
+            {
+                mainWindow.rightTextBox.SelectedText = string.Empty;
+            }
+        }
+
+        private void DeleteRow()
+        {
+            if (mainWindow.leftTextBox.TextArea.IsKeyboardFocused)
+            {
+                mainWindow.leftTextBox.SelectedText = string.Empty;
+                int lineIndex = mainWindow.leftTextBox.TextArea.Caret.Line;
+                mainWindow.leftTextBox.Document.Replace(mainWindow.leftTextBox.Document.GetLineByNumber(lineIndex).Offset,
+                    mainWindow.leftTextBox.Document.GetLineByNumber(lineIndex).TotalLength, string.Empty);
+            }
+            else if (mainWindow.rightTextBox.TextArea.IsKeyboardFocused)
+            {
+                mainWindow.rightTextBox.SelectedText = string.Empty;
+                int lineIndex = mainWindow.rightTextBox.TextArea.Caret.Line;
+                mainWindow.rightTextBox.Document.Replace(mainWindow.rightTextBox.Document.GetLineByNumber(lineIndex).Offset,
+                    mainWindow.rightTextBox.Document.GetLineByNumber(lineIndex).TotalLength, string.Empty);
             }
         }
 
@@ -72,6 +115,58 @@ namespace ViewModel
                 Clipboard.SetText(mainWindow.rightTextBox.SelectedText);
                 mainWindow.rightTextBox.SelectedText = string.Empty;
             }
+        }
+
+        private void SelectAll()
+        {
+            TextEditor textBox = mainWindow.leftTextBox;
+            if (mainWindow.leftTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.leftTextBox;
+            }
+            else if (mainWindow.rightTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.rightTextBox;
+            }
+
+            if (textBox == mainWindow.leftTextBox)
+            {
+                mainWindow.leftTextBox.SelectAll();
+            }
+            else if (textBox == mainWindow.rightTextBox)
+            {
+                mainWindow.rightTextBox.SelectAll();
+            }
+        }
+
+        private void Undo()
+        {
+            TextEditor textBox = mainWindow.leftTextBox;
+            if (mainWindow.leftTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.leftTextBox;
+            }
+            else if (mainWindow.rightTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.rightTextBox;
+            }
+
+            textBox.Undo();
+        }
+
+        private void Redo()
+        {
+            TextEditor textBox = mainWindow.leftTextBox;
+            if (mainWindow.leftTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.leftTextBox;
+            }
+            else if (mainWindow.rightTextBox.TextArea.IsKeyboardFocused)
+            {
+                textBox = mainWindow.rightTextBox;
+            }
+
+            textBox.Redo();
         }
     }
 }

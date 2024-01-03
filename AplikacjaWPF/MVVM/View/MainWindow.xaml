@@ -15,6 +15,12 @@
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"></WindowChrome>
     </WindowChrome.WindowChrome>
 
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding OpenFileCommand}" CommandParameter="L"  Key="L" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding OpenFileCommand}" CommandParameter="R"  Key="R" Modifiers="Ctrl"/>
+    </Window.InputBindings>
+
+
     <Grid Background="LightGray">
         
         <!-- This grid is to eliminate default windows top window strip -->
@@ -41,16 +47,26 @@
             <!-- First of inner Menus in this grid. This one gives to user main functions of the app to use -->
             <Menu Grid.ColumnSpan="4" Grid.Row="0" Background="LightGray">
                 <MenuItem Header="Plik" FontSize="16" Height="35">
-                    <MenuItem Header="Nowy plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L"></MenuItem>
-                    <MenuItem Header="Nowy plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R"></MenuItem>
+                    <MenuItem Header="Nowy plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L" InputGestureText="Ctrl+L"></MenuItem>
+                    <MenuItem Header="Nowy plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R" InputGestureText="Ctrl+R"></MenuItem>
+                    <Separator/>
+                    <MenuItem Header="Dodaj plik w lewym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="L+"></MenuItem>
+                    <MenuItem Header="Dodaj plik w prawym oknie" FontSize="14" Command="{Binding OpenFileCommand}" CommandParameter="R+"></MenuItem>
                     <Separator />
                     <MenuItem Header="Zamknij" FontSize="14" Command="{Binding CloseCommand}"></MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="Edytuj" FontSize="16">
-                    <MenuItem Header="Kopiuj" FontSize="14" Command="{Binding CopyCommand}"></MenuItem>
-                    <MenuItem Header="Wklej" FontSize="14" Command="{Binding PasteCommand}"></MenuItem>
-                    <MenuItem Header="Wytnij" FontSize="14" Command="{Binding CutCommand}"></MenuItem>
+                    <MenuItem Header="Kopiuj" FontSize="14" Command="{Binding CopyCommand}" InputGestureText="Ctrl+C"></MenuItem>
+                    <MenuItem Header="Usuń" FontSize="14" Command="{Binding DeleteCommand}" InputGestureText="Delete"></MenuItem>
+                    <MenuItem Header="Usuń wiersz" FontSize="14" Command="{Binding DeleteRowCommand}" InputGestureText="Ctrl+D"></MenuItem>
+                    <MenuItem Header="Wklej" FontSize="14" Command="{Binding PasteCommand}" InputGestureText="Ctrl+V"></MenuItem>
+                    <MenuItem Header="Wytnij" FontSize="14" Command="{Binding CutCommand}" InputGestureText="Ctrl+X"></MenuItem>
+                    <MenuItem Header="Zaznacz wszystko" FontSize="14" Command="{Binding SelectAllCommand}" InputGestureText="Ctrl+A"></MenuItem>
+                    <Separator/>
+                    <MenuItem Header="Cofnij" FontSize="14" Command="{Binding UndoCommand}" InputGestureText="Ctrl+Z"/>
+                    <MenuItem Header="Wykonaj ponownie" FontSize="14" Command="{Binding RedoCommand}" InputGestureText="Ctrl+Y"/>
+
                 </MenuItem>
 
                 <MenuItem Header="Widok" FontSize="16">
@@ -100,7 +116,43 @@
 
             <!-- Second of inner Menus of this grid. Contains a collection of iconn-buttons representing most imprtant functions of the menu above -->
             <Menu Grid.ColumnSpan="4" Grid.Row="1">
-                <MenuItem  Width="30" Height="30" Command="{Binding SwapCommand}">
+                <MenuItem Command="{Binding OpenFileCommand}" CommandParameter="L">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/newLeftFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Nowy plik w lewym oknie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding OpenFileCommand}" CommandParameter="R">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/newRightFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Nowy plik w prawym oknie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding OpenFileCommand}" CommandParameter="L+">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/addLeftFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Dodaj plik w lewym oknie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding OpenFileCommand}" CommandParameter="R+">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/addRightFile.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Dodaj plik w prawym oknie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding SwapCommand}">
                     <MenuItem.Header>
                         <Image Source="../../Images/swap.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
                             <Image.ToolTip>
@@ -109,7 +161,7 @@
                         </Image>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Width="30" Height="30" Command="{Binding ClearCommand}" CommandParameter="L">
+                <MenuItem Command="{Binding ClearCommand}" CommandParameter="L">
                     <MenuItem.Header>
                         <Image Source="../../Images/broomLeft.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
                             <Image.ToolTip>
@@ -123,6 +175,33 @@
                         <Image Source="../../Images/broomRight.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
                             <Image.ToolTip>
                                 Wyczyść prawe pole tekstowe
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="30" Height="30" Command="{Binding IncreaseFontCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/increaseFont.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Zwiększ czcionkę
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="30" Height="30" Command="{Binding DecreaseFontCommand}" CommandParameter="R">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/decreaseFont.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Zmniejsz czcionkę
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="30" Height="30" Command="{Binding ShowLineNumbersCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/lineNumbers.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Pokaż numery lini
                             </Image.ToolTip>
                         </Image>
                     </MenuItem.Header>
@@ -181,8 +260,18 @@
 
                 <!-- Field that contains a path to the file presented in the TextBox below-->
                 <TextBox x:Name="leftFilePath" Grid.Row="0" Grid.Column="1" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
-                         IsReadOnly="True" BorderThickness="0,0,0,1">
+                    IsReadOnly="True" BorderThickness="0,0,0,1">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            <ToolTip.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=PlacementTarget.Text, RelativeSource={RelativeSource AncestorType={x:Type ToolTip}}}"/>
+                                </DataTemplate>
+                            </ToolTip.ContentTemplate>
+                        </ToolTip>
+                    </TextBox.ToolTip>
                 </TextBox>
+
 
                 <Grid Grid.Row="1">
                     <avalonEdit:TextEditor x:Name="leftTextBox" FontSize="13"
@@ -199,6 +288,15 @@
 
                 <TextBox x:Name="rightFilePath" Grid.Row="0" Grid.Column="1" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
                          IsReadOnly="True" BorderThickness="0,0,0,1">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            <ToolTip.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=PlacementTarget.Text, RelativeSource={RelativeSource AncestorType={x:Type ToolTip}}}"/>
+                                </DataTemplate>
+                            </ToolTip.ContentTemplate>
+                        </ToolTip>
+                    </TextBox.ToolTip>
                 </TextBox>
 
                 <Grid Grid.Row="1">

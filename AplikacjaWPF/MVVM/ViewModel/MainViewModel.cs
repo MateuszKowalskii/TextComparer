@@ -35,11 +35,16 @@ namespace ViewModel
         public DelegateCommand<string> OpenFileCommand => DocsReader.OpenFileCommand;
         public DocsReader DocsReader { get; }
 
-        //EditOptions
-        public DelegateCommand CopyCommand => EditOptions.CopyCommand;
-        public DelegateCommand PasteCommand => EditOptions.PasteCommand;
-        public DelegateCommand CutCommand => EditOptions.CutCommand;
-        public EditOperator EditOptions { get; }
+        //EditOperator
+        public DelegateCommand CopyCommand => EditOperator.CopyCommand;
+        public DelegateCommand DeleteCommand => EditOperator.DeleteCommand;
+        public DelegateCommand DeleteRowCommand => EditOperator.DeleteRowCommand;
+        public DelegateCommand PasteCommand => EditOperator.PasteCommand;
+        public DelegateCommand CutCommand => EditOperator.CutCommand;
+        public DelegateCommand SelectAllCommand => EditOperator.SelectAllCommand;
+        public DelegateCommand UndoCommand => EditOperator.UndoCommand;
+        public DelegateCommand RedoCommand => EditOperator.RedoCommand;
+        public EditOperator EditOperator { get; }
 
 
         private MainWindow mainWindow;
@@ -51,7 +56,7 @@ namespace ViewModel
             WindowStateEditor = new WindowStateEditor(this.mainWindow);
             ComparationExecutor = new ComparationExecutor(this.mainWindow);
             DocsReader = new DocsReader(this.mainWindow);
-            EditOptions = new EditOperator(this.mainWindow);
+            EditOperator = new EditOperator(this.mainWindow);
         }
     }
 }

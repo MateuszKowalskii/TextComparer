@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\addLeftFile.png" />
+    <None Remove="Images\addRightFile.png" />
+    <None Remove="Images\broomLeft.png" />
+    <None Remove="Images\broomRight.png" />
+    <None Remove="Images\decreaseFont.png" />
+    <None Remove="Images\increaseFont.png" />
+    <None Remove="Images\lineNumbers.png" />
+    <None Remove="Images\newLeftFile.png" />
+    <None Remove="Images\newRightFile.png" />
     <None Remove="Images\swap.png" />
   </ItemGroup>
 
@@ -25,6 +34,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\addLeftFile.png" />
+    <Resource Include="Images\addRightFile.png" />
+    <Resource Include="Images\broomLeft.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\broomRight.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\decreaseFont.png" />
+    <Resource Include="Images\increaseFont.png" />
+    <Resource Include="Images\lineNumbers.png" />
+    <Resource Include="Images\newRightFile.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\newLeftFile.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\swap.png" />
   </ItemGroup>
 

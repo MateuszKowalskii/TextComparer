@@ -1,4 +1,5 @@
-﻿using ICSharpCode.AvalonEdit.Highlighting;
+﻿using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Highlighting;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows.Controls;
@@ -97,16 +98,19 @@ namespace ViewModel
 
         private void ClearTextBox(string side)
         {
-            if(side == "L")
+            if (side == "L")
             {
                 mainWindow.leftFilePath.Text = "";
-                mainWindow.leftTextBox.Text = "";
+                mainWindow.leftTextBox.SelectAll();
+                mainWindow.leftTextBox.SelectedText = string.Empty;
             }
             else
             {
                 mainWindow.rightFilePath.Text = "";
-                mainWindow.rightTextBox.Text = "";
+                mainWindow.rightTextBox.SelectAll();
+                mainWindow.rightTextBox.SelectedText = string.Empty;
             }
+
         }
     }
 }

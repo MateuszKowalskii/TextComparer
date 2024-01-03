@@ -1,0 +1,22 @@
+﻿Wszelkie obrazy zostły pozyskane ze strony https://www.flaticon.com/
+
+Ikonka nowego pliku:
+https://www.flaticon.com/free-icon/new-document_1155674?term=new+file&page=1&position=1&origin=search&related_id=1155674
+
+Czarna ikonka nowego pliku:
+https://www.flaticon.com/free-icon/number_1828018?term=line+numbers&page=1&position=7&origin=search&related_id=1828018
+
+Ikonka "swap":
+https://www.flaticon.com/free-icon/swap_318147?term=swap&page=1&position=8&origin=search&related_id=318147
+
+Ikonka miotełki:
+https://www.flaticon.com/free-icon/broom_9742093?term=clear&page=1&position=2&origin=search&related_id=9742093
+
+Ikonka "zwiększ czcionkę":
+https://www.flaticon.com/free-icon/resize-font_690337?term=increase+font&page=1&position=13&origin=search&related_id=690337
+
+Ikonka "zmniejsz czcionkę":
+https://www.flaticon.com/free-icon/resize-font_690338?term=decrease+font&page=1&position=10&origin=search&related_id=690338
+
+Ikonka numerów linii:
+https://www.flaticon.com/free-icon/number_1828018?term=line+numbers&page=1&position=7&origin=search&related_id=1828018

@@ -1,13 +1,14 @@
 ﻿Najpilniejsze:
 
-* dodać ikonki małego menu
+* dodać ikonki małego menu X
+* logo apki
 
 
 Mniej pilne:
 
-* tryb liczby znaków się różniących
-* odległość Levenhsteina zwracać
-* obsługa ctrl+a, delete, undo, redo
+* tryb liczby znaków się różniących - iloma znakami się różnią
+* statystyki wyrazów najczęstszych
+* odległość Levenhsteina zwracać X
 
 Błędy:
 
@@ -18,6 +19,6 @@ Testy:
 * różne wyniki dla różnych algorytmów na tym samym tekście
 * testy dla wszystkich uzywanych rozszerzeń
 
-Być może:
-
-* dodać możliwość nadpisywania plików
+Może:
+* dodać jakieś algorytmy jeszcze
+* ustawienia personalne
