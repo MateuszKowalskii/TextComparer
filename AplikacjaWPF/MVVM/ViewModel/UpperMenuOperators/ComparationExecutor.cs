@@ -24,6 +24,8 @@ namespace ViewModel
 
         private static int currentAlgorythm = (int)Algorythm.Jaro;
         private static int currentMode = (int)Mode.Percentage;
+
+        private AdvancedResultsOperator advancedResultsOperator;
         private MainWindow mainWindow;
 
 
@@ -44,6 +46,8 @@ namespace ViewModel
             IgnorePunctationCommand = new DelegateCommand(() => {  ignorePunctation = !ignorePunctation; });
 
             AdvancedResultsCommand = new DelegateCommand(ChangeAdvancedResultsMode);
+
+            advancedResultsOperator = new AdvancedResultsOperator(mainWindow);
             this.mainWindow = mainWindow;
         }
 
@@ -127,23 +131,8 @@ namespace ViewModel
                 //Present advanced results
                 if (advancedResults == true)
                 {
-                    try
-                    {
-                        amountOfMostFrequentWords = int.Parse(mainWindow.wordsAmount.Text);
-                    }
-                    catch (Exception)
-                    {
-                        amountOfMostFrequentWords = 10;
-                    }
-
-                    StatisticsCalculator.MostUsedWordFrequency(mainWindow.LeftTextBox.Text,
-                        mainWindow.resultsPanel.blLeftWordFrequencyStatistics, "L", amountOfMostFrequentWords);
-                    StatisticsCalculator.MostUsedWordFrequency(mainWindow.RightTextBox.Text,
-                        mainWindow.resultsPanel.blRightWordFrequencyStatistics, "R", amountOfMostFrequentWords);
-                    if (result >= 0.8) mainWindow.resultsPanel.blSimilarity.Text = "Porównywane teksty MOŻNA uznać za takie same";
-                    else mainWindow.resultsPanel.blSimilarity.Text = "Porównywanych tekstów NIE MOŻNA uznać za takie same";
+                    advancedResultsOperator.PresentAdvancedResults(mainWindow.LeftTextBox.Text, mainWindow.RightTextBox.Text, result);
                 }
-                //mainWindow.resultsPanel.blDiffrentsSignsNumber.Text = "Ilość znaków jakimi porównywane teksty różnią się: ";
 
                 //Present basic results
                 if (currentMode == (int)Mode.SignNumber) ;

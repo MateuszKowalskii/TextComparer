@@ -1,11 +1,10 @@
 ﻿Najpilniejsze:
 
-* dodać ikonki małego menu X
+* dodać ikonki małego menu 
 
 Mniej pilne:
 
-* tryb liczby znaków się różniących - iloma znakami się różnią
-* odległość Levenhsteina zwracać X
+* Stopień Złożoności Tekstu
 * porównywanie linii
 * porównywanie znaków
 

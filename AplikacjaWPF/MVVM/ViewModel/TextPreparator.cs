@@ -25,7 +25,7 @@ namespace ViewModel
             return input;
         }
 
-        static string RemoveWhitespace(string input)
+        public static string RemoveWhitespace(string input)
         {
             return new string(input.Where(c => !char.IsWhiteSpace(c)).ToArray());
         }
