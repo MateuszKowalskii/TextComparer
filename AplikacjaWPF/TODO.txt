@@ -5,12 +5,12 @@
 Mniej pilne:
 
 * tryb liczby znaków się różniących - iloma znakami się różnią
-* statystyki wyrazów najczęstszych
 * odległość Levenhsteina zwracać X
+* porównywanie linii
+* porównywanie znaków
 
 Błędy:
 
-* w wordzie odczytywana "linia" to tekst od entera do entera co może być całym akapitem 
 * undo/redo tak nie przywracają po wyczyszczeniu
 
 *******************************************************************

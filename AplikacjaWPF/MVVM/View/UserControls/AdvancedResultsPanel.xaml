@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
              xmlns:local="clr-namespace:AplikacjaWPF.MVVM.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -25,9 +26,26 @@
         <StackPanel Grid.Column="1" Grid.Row="1" Background="Ivory">
             <TextBlock x:Name="blSimilarity" FontSize="16" HorizontalAlignment="Center" TextAlignment="Center"
                        TextWrapping="Wrap" Margin="0,30,0,0"></TextBlock>
+            <TextBlock x:Name="blDiffrentsSignsNumber" FontSize="16" HorizontalAlignment="Center" TextAlignment="Center"
+                       TextWrapping="Wrap" Margin="0,30,0,0"></TextBlock>
         </StackPanel>
-        <StackPanel Grid.Column="3" Grid.Row="1" Background="Ivory">
+        <Grid Grid.Column="3" Grid.Row="1" Background="Ivory">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,30,0,0">
+                <TextBox x:Name="blLeftWordFrequencyStatistics" FontSize="16"
+                   TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" 
+                   Background="Transparent" BorderThickness="0"></TextBox>
+            </ScrollViewer>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="0,30,0,0">
+                <TextBox x:Name="blRightWordFrequencyStatistics" FontSize="16"
+                   TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" 
+                   Background="Transparent" BorderThickness="0"></TextBox>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

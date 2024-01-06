@@ -1,5 +1,6 @@
 ﻿using AplikacjaWPF.MVVM.View.UserControls;
 using ICSharpCode.AvalonEdit;
+using NPOI.SS.Formula.Functions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,6 +18,8 @@ namespace View
 
         public TextBlock AlgorythmBlock { get; set; }
         public TextBlock ResultsBlock { get; set; }
+        private TextBox WordsAmount { get; set; }
+
         public WindowState State { get; set; }
         public AdvancedResultsPanel ResultsPanel { get; set; }
         private MainViewModel MainViewModel { get; set; }
@@ -27,6 +30,7 @@ namespace View
             InitializeComponent();
 
             State = WindowState;
+            WordsAmount = wordsAmount;
 
             LeftPathTextBox = leftFilePath;
             LeftTextBox = leftTextBox;

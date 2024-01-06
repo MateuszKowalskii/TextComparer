@@ -5,32 +5,6 @@ namespace ViewModel
 {
     public class MainViewModel
     {
-        //OperationsViewer
-        public DelegateCommand IncreaseFontCommand => OperationsViewer.IncreaseFontCommand;
-        public DelegateCommand DecreaseFontCommand => OperationsViewer.DecreaseFontCommand;
-        public DelegateCommand SwapCommand => OperationsViewer.SwapCommand;
-        public DelegateCommand ShowLineNumbersCommand => OperationsViewer.ShowLineNumbersCommand;
-        public DelegateCommand<string> HighlightCommand => OperationsViewer.HighlightCommand;
-        public DelegateCommand<string> ClearCommand => OperationsViewer.ClearCommand;
-        public OperationsViewer OperationsViewer { get; }
-
-        //WindowStateEditor
-        public DelegateCommand MinimizeCommand => WindowStateEditor.MinimizeCommand;
-        public DelegateCommand MaximizeCommand => WindowStateEditor.MaximizeCommand;
-        public DelegateCommand CloseCommand => WindowStateEditor.CloseCommand;
-        public DelegateCommand ShowAdvancedResultsCommand => WindowStateEditor.AdvancedResultsCommand;
-        public WindowStateEditor WindowStateEditor { get; }
-
-        //ComparationExecutor
-        public DelegateCommand<string> ChangeAlgorythmCommand => ComparationExecutor.ChangeAlgorythmCommand;
-        public DelegateCommand<string> ChangeModeCommand => ComparationExecutor.ChangeModeCommand;
-        public DelegateCommand ExecuteCommand => ComparationExecutor.ExecuteCommand;
-        public DelegateCommand IgnoreSizesCommand => ComparationExecutor.IgnoreSizesCommand;
-        public DelegateCommand IgnoreWhitespacesCommand => ComparationExecutor.IgnoreWhitespacesCommand;
-        public DelegateCommand IgnorePunctationCommand => ComparationExecutor.IgnorePunctationCommand;
-        public DelegateCommand AdvancedResultsCommand => ComparationExecutor.AdvancedResultsCommand;
-        public ComparationExecutor ComparationExecutor { get; }
-
         //DocsReader
         public DelegateCommand<string> OpenFileCommand => DocsReader.OpenFileCommand;
         public DocsReader DocsReader { get; }
@@ -46,13 +20,39 @@ namespace ViewModel
         public DelegateCommand RedoCommand => EditOperator.RedoCommand;
         public EditOperator EditOperator { get; }
 
+        //ViewOperator
+        public DelegateCommand IncreaseFontCommand => ViewOperator.IncreaseFontCommand;
+        public DelegateCommand DecreaseFontCommand => ViewOperator.DecreaseFontCommand;
+        public DelegateCommand SwapCommand => ViewOperator.SwapCommand;
+        public DelegateCommand ShowLineNumbersCommand => ViewOperator.ShowLineNumbersCommand;
+        public DelegateCommand<string> HighlightCommand => ViewOperator.HighlightCommand;
+        public DelegateCommand<string> ClearCommand => ViewOperator.ClearCommand;
+        public OperationsViewer ViewOperator { get; }
+
+        //ComparationExecutor - for Menu and Algorythms Tabs
+        public DelegateCommand<string> ChangeAlgorythmCommand => ComparationExecutor.ChangeAlgorythmCommand;
+        public DelegateCommand<string> ChangeModeCommand => ComparationExecutor.ChangeModeCommand;
+        public DelegateCommand ExecuteCommand => ComparationExecutor.ExecuteCommand;
+        public DelegateCommand IgnoreSizesCommand => ComparationExecutor.IgnoreSizesCommand;
+        public DelegateCommand IgnoreWhitespacesCommand => ComparationExecutor.IgnoreWhitespacesCommand;
+        public DelegateCommand IgnorePunctationCommand => ComparationExecutor.IgnorePunctationCommand;
+        public DelegateCommand AdvancedResultsCommand => ComparationExecutor.AdvancedResultsCommand;
+        public ComparationExecutor ComparationExecutor { get; }
+
+        //WindowStateEditor
+        public DelegateCommand MinimizeCommand => WindowStateEditor.MinimizeCommand;
+        public DelegateCommand MaximizeCommand => WindowStateEditor.MaximizeCommand;
+        public DelegateCommand CloseCommand => WindowStateEditor.CloseCommand;
+        public DelegateCommand ShowAdvancedResultsCommand => WindowStateEditor.AdvancedResultsCommand;
+        public WindowStateEditor WindowStateEditor { get; }
+
 
         private MainWindow mainWindow;
 
         public MainViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            OperationsViewer = new OperationsViewer(this.mainWindow);
+            ViewOperator = new OperationsViewer(this.mainWindow);
             WindowStateEditor = new WindowStateEditor(this.mainWindow);
             ComparationExecutor = new ComparationExecutor(this.mainWindow);
             DocsReader = new DocsReader(this.mainWindow);

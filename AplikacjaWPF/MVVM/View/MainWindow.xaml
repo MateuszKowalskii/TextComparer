@@ -77,8 +77,8 @@
 
                 <MenuItem Header="Widok" FontSize="16">
                     <MenuItem Header="Czcionka">
-                        <MenuItem Header="Zwiększ" Command="{Binding IncreaseFontCommand}"></MenuItem>
-                        <MenuItem Header="Zmniejsz" Command="{Binding DecreaseFontCommand}"></MenuItem>
+                        <MenuItem Header="Zwiększ" Command="{Binding IncreaseFontCommand}" StaysOpenOnClick="True"></MenuItem>
+                        <MenuItem Header="Zmniejsz" Command="{Binding DecreaseFontCommand}" StaysOpenOnClick="True"></MenuItem>
                     </MenuItem>
                     <MenuItem Header="Pokaż numery linii" Command="{Binding ShowLineNumbersCommand}" IsCheckable="True" 
                               IsChecked="True"></MenuItem>
@@ -135,6 +135,9 @@
                     <MenuItem Header="Zaznacz różnice"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Rozszerzone menu wyników" Name="AdvancedResults" Command="{Binding AdvancedResultsCommand}" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Wybierz ilość wyników" Name="FrequentWords" IsCheckable="False">
+                        <TextBox Name="wordsAmount" Text="10" Width="100"></TextBox>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
 
@@ -299,7 +302,7 @@
             </local:AdvancedResultsPanel>
             
             <!-- Textboxes with analysed texts -->
-            <Grid Grid.Row="0" Grid.Column="1">
+            <Grid Grid.Row="0" Grid.Column="1" x:Name="firstPanel">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
