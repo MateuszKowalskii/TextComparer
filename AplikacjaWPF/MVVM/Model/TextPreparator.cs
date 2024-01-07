@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text;
 
-namespace ViewModel
+namespace View
 {
     public static class TextPreparator
     {

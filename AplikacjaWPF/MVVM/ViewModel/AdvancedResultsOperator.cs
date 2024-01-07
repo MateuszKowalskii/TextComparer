@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using View;
 
 namespace ViewModel
@@ -25,6 +26,9 @@ namespace ViewModel
             mainWindow.resultsPanel.blTextsStats.Text += "Ilość unikalnych słów:\nTekst lewy: " + StatisticsCalculator.CountUniqueWords(firstString)
                 + "\nTekst prawy: " + StatisticsCalculator.CountUniqueWords(secondString) + "\n\n";
 
+            mainWindow.resultsPanel.blTextsStats.Text += "Stopień czytelności Dale’a – Challa:\nTekst lewy: " + Dale_Chall.Readibility(firstString)
+                + "\nTekst prawy: " + Dale_Chall.Readibility(secondString) + "\n\n";
+
             int amount;
             try
             {
@@ -37,6 +41,7 @@ namespace ViewModel
 
             mainWindow.resultsPanel.blLeftWordFrequencyStatistics.Text = "Najczęstsze wyrazy lewego tekstu:\n\n" + StatisticsCalculator.WordFrequency(firstString, amount);
             mainWindow.resultsPanel.blRightWordFrequencyStatistics.Text = "Najczęstsze wyrazy prawego tekstu:\n\n" + StatisticsCalculator.WordFrequency(secondString, amount);
+
         }
     }
 }

@@ -2,7 +2,6 @@
 using Model;
 using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using View;

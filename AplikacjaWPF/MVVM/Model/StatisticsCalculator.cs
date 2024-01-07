@@ -2,15 +2,13 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace ViewModel
+namespace View
 {
     public static class StatisticsCalculator
     {
         public static string WordFrequency(string text, int numberOfResults)
         {
-            string[] dictionary = Regex.Split(text, @"\P{L}+")
-                              .Where(slowo => !string.IsNullOrWhiteSpace(slowo))
-                              .ToArray();
+            string[] dictionary = ExtractWords(text);
 
             Dictionary<string, int> statistics = new Dictionary<string, int>();
 
@@ -45,17 +43,13 @@ namespace ViewModel
 
         public static int CountWords(string text)
         {
-            string[] words = Regex.Split(text, @"\P{L}+")
-                  .Where(slowo => !string.IsNullOrWhiteSpace(slowo))
-                  .ToArray();
+            string[] words = ExtractWords(text);
             return words.Length;
         }
 
         public static int CountUniqueWords(string text)
         {
-            string[] dictionary = Regex.Split(text, @"\P{L}+")
-                              .Where(slowo => !string.IsNullOrWhiteSpace(slowo))
-                              .ToArray();
+            string[] dictionary = ExtractWords(text);
 
             Dictionary<string, int> statistics = new Dictionary<string, int>();
 
@@ -69,6 +63,13 @@ namespace ViewModel
             }
 
             return statistics.Count;
+        }
+
+        public static string[] ExtractWords(string text)
+        {
+            return  Regex.Split(text, @"\P{L}+")
+                .Where(word => !string.IsNullOrWhiteSpace(word))
+                .ToArray();
         }
     }
 }
