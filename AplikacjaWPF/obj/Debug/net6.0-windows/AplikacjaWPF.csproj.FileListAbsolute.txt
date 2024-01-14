@@ -17,9 +17,7 @@ C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\obj\Debug\net6
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\obj\Debug\net6.0-windows\AplikacjaWPF.pdb
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\obj\Debug\net6.0-windows\AplikacjaWPF.genruntimeconfig.cache
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\obj\Debug\net6.0-windows\ref\AplikacjaWPF.dll
-C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.dll
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\obj\Debug\net6.0-windows\AplikacjaWPF.csproj.CopyComplete
-C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Word.dll
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\bin\Debug\net6.0-windows\Prism.dll
 C:\Users\mateu\source\repos\Nauka\Algorytmy tekstowe\AplikacjaWPF\bin\Debug\net6.0-windows\Prism.Wpf.dll

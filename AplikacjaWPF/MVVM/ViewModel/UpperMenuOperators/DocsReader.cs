@@ -64,8 +64,8 @@ namespace ViewModel
         public void NewFile(System.Windows.Controls.TextBox tbPath, TextEditor tbText, bool add)
         {
             Microsoft.Win32.OpenFileDialog fileDialog = new();
-            fileDialog.Filter = "Wszystkie|*.txt;*.docx;*.css;*.html;*.js;*.py;*.cs;*.java|Pliki tekstowe txt|*.txt|Pliki docx|*.docx" +
-                "|Pliki CSS|*.css|Pliki HTML|*.html|Pliki JS|*.js|Pliki Python|*.py|Pliki C#|*.cs|Pliki Java|*.java";
+            fileDialog.Filter = "Wszystkie|*.txt;*.docx;*.css;*.html;*.js;*.py;*.cs;*.java;*.xml|Pliki tekstowe txt|*.txt|Pliki docx|*.docx" +
+                "|Pliki CSS|*.css|Pliki HTML|*.html|Pliki JS|*.js|Pliki Python|*.py|Pliki C#|*.cs|Pliki Java|*.java|Pliki XML|*.xml";
 
             fileDialog.Title = "Proszę, wybierz plik tekstowy, który chcesz porównać...";
             bool? success = fileDialog.ShowDialog();

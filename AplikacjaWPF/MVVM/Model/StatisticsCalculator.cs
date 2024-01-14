@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MathNet.Numerics;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -63,6 +65,34 @@ namespace View
             }
 
             return statistics.Count;
+        }
+
+        public static double CalculateEntropy(string text)
+        {
+            if (string.IsNullOrEmpty(text))return 0.0;
+
+            Dictionary<char, int> charFrequency = new Dictionary<char, int>();
+            int totalChars = 0;
+
+            foreach (char c in text)
+            {
+                if (!charFrequency.ContainsKey(c))
+                    charFrequency[c] = 1;
+                else
+                    charFrequency[c]++;
+
+                totalChars++;
+            }
+
+            double entropy = 0.0;
+
+            foreach (var frequency in charFrequency.Values)
+            {
+                double probability = (double)frequency / totalChars;
+                entropy -= probability * Math.Log2(probability);
+            }
+
+            return entropy.Round(3);
         }
 
         public static string[] ExtractWords(string text)

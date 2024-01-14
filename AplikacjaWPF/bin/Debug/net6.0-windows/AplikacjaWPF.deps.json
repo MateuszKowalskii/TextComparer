@@ -10,8 +10,6 @@
         "dependencies": {
           "AvalonEdit": "6.3.0.90",
           "DocX": "2.5.0",
-          "DocumentFormat.OpenXml": "2.20.0",
-          "Microsoft.Office.Interop.Word": "15.0.4797.1004",
           "NPOI": "2.6.2",
           "Prism.Wpf": "8.1.97"
         },
@@ -35,21 +33,10 @@
           }
         }
       },
-      "DocumentFormat.OpenXml/2.20.0": {
-        "dependencies": {
-          "System.IO.Packaging": "4.7.0"
-        },
-        "runtime": {
-          "lib/net6.0/DocumentFormat.OpenXml.dll": {
-            "assemblyVersion": "2.20.0.0",
-            "fileVersion": "2.20.0.0"
-          }
-        }
-      },
       "DocX/2.5.0": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0",
-          "System.IO.Packaging": "4.7.0"
+          "System.IO.Packaging": "4.5.0"
         },
         "runtime": {
           "lib/net5.0/Xceed.Document.NET5.dll": {
@@ -87,14 +74,6 @@
         }
       },
       "Microsoft.NETCore.Platforms/5.0.0": {},
-      "Microsoft.Office.Interop.Word/15.0.4797.1004": {
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Office.Interop.Word.dll": {
-            "assemblyVersion": "15.0.0.0",
-            "fileVersion": "15.0.4797.1003"
-          }
-        }
-      },
       "Microsoft.Win32.SystemEvents/6.0.0": {},
       "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
         "runtime": {
@@ -195,7 +174,7 @@
         }
       },
       "System.Formats.Asn1/6.0.0": {},
-      "System.IO.Packaging/4.7.0": {},
+      "System.IO.Packaging/4.5.0": {},
       "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
       "System.Security.AccessControl/6.0.0": {},
       "System.Security.Cryptography.Pkcs/6.0.1": {
@@ -268,13 +247,6 @@
       "path": "bouncycastle.cryptography/2.2.1",
       "hashPath": "bouncycastle.cryptography.2.2.1.nupkg.sha512"
     },
-    "DocumentFormat.OpenXml/2.20.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+oFMsEppo/W6KpGTRXaJl2jTFYn9zeon4FaZuDoCijQ1/0JaPENaCef7d4Y3f8v116eKhVBwd4Ya+/NDglxkjw==",
-      "path": "documentformat.openxml/2.20.0",
-      "hashPath": "documentformat.openxml.2.20.0.nupkg.sha512"
-    },
     "DocX/2.5.0": {
       "type": "package",
       "serviceable": true,
@@ -309,13 +281,6 @@
       "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
       "path": "microsoft.netcore.platforms/5.0.0",
       "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
-    },
-    "Microsoft.Office.Interop.Word/15.0.4797.1004": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lavTOrMGK/o/t3+gGr7JuVrL8XDdnS0DwPLcYv/StOiysXO4L0C36IXTVtEJo1Mh9Aoxo9a8dgGcPi+faTlv0g==",
-      "path": "microsoft.office.interop.word/15.0.4797.1004",
-      "hashPath": "microsoft.office.interop.word.15.0.4797.1004.nupkg.sha512"
     },
     "Microsoft.Win32.SystemEvents/6.0.0": {
       "type": "package",
@@ -394,12 +359,12 @@
       "path": "system.formats.asn1/6.0.0",
       "hashPath": "system.formats.asn1.6.0.0.nupkg.sha512"
     },
-    "System.IO.Packaging/4.7.0": {
+    "System.IO.Packaging/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
-      "path": "system.io.packaging/4.7.0",
-      "hashPath": "system.io.packaging.4.7.0.nupkg.sha512"
+      "sha512": "sha512-OjtW5pGp1E7KE3ontBrzy+nSFJCM6pcbVDdo3gg4DauTfdtZKdeKvMVlADF4fSY+OfXWUp4qCvOSxIltt37LbA==",
+      "path": "system.io.packaging/4.5.0",
+      "hashPath": "system.io.packaging.4.5.0.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/5.0.0": {
       "type": "package",

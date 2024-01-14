@@ -37,6 +37,8 @@ namespace ViewModel
         public DelegateCommand IgnoreWhitespacesCommand => ComparationExecutor.IgnoreWhitespacesCommand;
         public DelegateCommand IgnorePunctationCommand => ComparationExecutor.IgnorePunctationCommand;
         public DelegateCommand AdvancedResultsCommand => ComparationExecutor.AdvancedResultsCommand;
+        public DelegateCommand HighlightLinesCommand => ComparationExecutor.HighlightLinesCommand;
+        public DelegateCommand ClearHighlightLinesCommand => ComparationExecutor.ClearHighlightLinesCommand;
         public ComparationExecutor ComparationExecutor { get; }
 
         //WindowStateEditor
@@ -45,7 +47,6 @@ namespace ViewModel
         public DelegateCommand CloseCommand => WindowStateEditor.CloseCommand;
         public DelegateCommand ShowAdvancedResultsCommand => WindowStateEditor.AdvancedResultsCommand;
         public WindowStateEditor WindowStateEditor { get; }
-
 
         private MainWindow mainWindow;
 

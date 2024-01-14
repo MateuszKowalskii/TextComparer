@@ -28,6 +28,9 @@ namespace ViewModel
 
             mainWindow.resultsPanel.blTextsStats.Text += "Stopień czytelności Dale’a – Challa:\nTekst lewy: " + Dale_Chall.Readibility(firstString)
                 + "\nTekst prawy: " + Dale_Chall.Readibility(secondString) + "\n\n";
+            
+            mainWindow.resultsPanel.blTextsStats.Text += "Entropia:\nTekst lewy: " + StatisticsCalculator.CalculateEntropy(firstString)
+                + "\nTekst prawy: " + StatisticsCalculator.CalculateEntropy(secondString) + "\n\n";
 
             int amount;
             try

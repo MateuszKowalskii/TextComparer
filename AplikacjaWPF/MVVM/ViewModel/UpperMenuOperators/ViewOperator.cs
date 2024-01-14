@@ -1,5 +1,4 @@
-﻿using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Highlighting;
+﻿using ICSharpCode.AvalonEdit.Highlighting;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows.Controls;
@@ -57,7 +56,7 @@ namespace ViewModel
         {
             int.TryParse(language, out int chosenLanguage);
             MenuItem[] menuItems = { mainWindow.TEXT, mainWindow.CSS, mainWindow.CS, mainWindow.HTML, mainWindow.JAVA,
-                mainWindow.JS, mainWindow.PY};
+                mainWindow.JS, mainWindow.PY, mainWindow.XML};
 
             foreach (MenuItem item in menuItems) {
                 if (item.CommandParameter.ToString() != language) item.IsChecked = false;
@@ -92,6 +91,10 @@ namespace ViewModel
                 case 6:
                     mainWindow.LeftTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".py");
                     mainWindow.RightTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".py");
+                    break;
+                case 7:
+                    mainWindow.LeftTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".xml");
+                    mainWindow.RightTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(".xml");
                     break;
             }
         }

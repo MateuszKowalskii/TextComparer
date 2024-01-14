@@ -17,22 +17,23 @@ namespace ViewModel
         public DelegateCommand IgnoreWhitespacesCommand { get; }
         public DelegateCommand IgnorePunctationCommand { get; }
         public DelegateCommand AdvancedResultsCommand { get; }
+        public DelegateCommand HighlightLinesCommand { get; }
+        public DelegateCommand ClearHighlightLinesCommand { get; }
 
         private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenhstein };
-        private enum Mode { SignNumber, Percentage, Absolute};
+        private enum Mode { Percentage, Absolute};
 
         private static int currentAlgorythm = (int)Algorythm.Jaro;
         private static int currentMode = (int)Mode.Percentage;
 
         private AdvancedResultsOperator advancedResultsOperator;
+        public Highlighter highlighter;
         private MainWindow mainWindow;
-
 
         private bool differSignSizes = false;
         private bool ignoreWhitespaces = true;
         private bool ignorePunctation = false;
         private bool advancedResults = true;
-        private int amountOfMostFrequentWords = 10;
 
         public ComparationExecutor(MainWindow mainWindow)
         {
@@ -44,9 +45,13 @@ namespace ViewModel
             IgnoreWhitespacesCommand = new DelegateCommand(() => {  ignoreWhitespaces = !ignoreWhitespaces; });
             IgnorePunctationCommand = new DelegateCommand(() => {  ignorePunctation = !ignorePunctation; });
 
+            HighlightLinesCommand = new DelegateCommand(async () => { await HighlightLinesAsync(); });
+            ClearHighlightLinesCommand = new DelegateCommand(() => highlighter?.ClearColors());
+
             AdvancedResultsCommand = new DelegateCommand(ChangeAdvancedResultsMode);
 
             advancedResultsOperator = new AdvancedResultsOperator(mainWindow);
+            highlighter = new Highlighter(mainWindow);
             this.mainWindow = mainWindow;
         }
 
@@ -67,7 +72,7 @@ namespace ViewModel
 
         public void ChangeCurrentMode(string chosenMode)
         {
-            MenuItem[] menuItems = { mainWindow.SignNumber, mainWindow.Percentage, mainWindow.Absolute };
+            MenuItem[] menuItems = { mainWindow.Percentage, mainWindow.Absolute };
             int.TryParse(chosenMode, out currentMode);
 
             foreach (MenuItem item in menuItems)
@@ -98,10 +103,17 @@ namespace ViewModel
         {
             await System.Threading.Tasks.Task.Run(() => ExecuteAlgorythm());
         }
+
+        private async System.Threading.Tasks.Task HighlightLinesAsync()
+        {
+            await System.Threading.Tasks.Task.Run(() => highlighter.CompareLines());
+        }
+
         private void ExecuteAlgorythm()
         {
             Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Visible);
             double result = 0;
+            Highlighter highlighter = new Highlighter(mainWindow);
 
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -134,8 +146,7 @@ namespace ViewModel
                 }
 
                 //Present basic results
-                if (currentMode == (int)Mode.SignNumber) ;
-                else if (currentMode == (int)Mode.Percentage)
+                if (currentMode == (int)Mode.Percentage)
                     mainWindow.ResultsBlock.Text = "Podobieństwo\nprocentowe:\n" + (result * 100).Round(3).ToString() + "%";
                 else if (currentMode == (int)Mode.Absolute)
                     mainWindow.ResultsBlock.Text = "Podobieństwo\nbezwzględne:\n" + result.Round(3).ToString();

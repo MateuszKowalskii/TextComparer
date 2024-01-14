@@ -1,10 +1,12 @@
 ﻿using AplikacjaWPF.MVVM.View.UserControls;
 using ICSharpCode.AvalonEdit;
-using NPOI.SS.Formula.Functions;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ViewModel;
+
 
 namespace View
 {
@@ -34,9 +36,11 @@ namespace View
 
             LeftPathTextBox = leftFilePath;
             LeftTextBox = leftTextBox;
+            leftTextBox.TextChanged += TextChanged;
 
             RightPathTextBox = rightFilePath;
             RightTextBox = rightTextBox;
+            rightTextBox.TextChanged += TextChanged;
 
             AlgorythmBlock = blAlgorythm;
             ResultsBlock = blResult;
@@ -45,7 +49,10 @@ namespace View
             MainViewModel = new MainViewModel(this);
             DataContext = MainViewModel;
         }
-
+        private void TextChanged([AllowNull] object sender, EventArgs e)
+        {
+            MainViewModel.ComparationExecutor.highlighter.ClearColors();
+        }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();

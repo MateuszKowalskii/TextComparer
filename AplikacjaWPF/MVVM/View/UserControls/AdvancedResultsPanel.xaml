@@ -24,10 +24,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Background="Ivory">
-            <TextBlock x:Name="blSimilarity" FontSize="16" HorizontalAlignment="Center" TextAlignment="Center"
-                       TextWrapping="Wrap" Margin="0,30,0,0"></TextBlock>
-            <TextBlock x:Name="blTextsStats" FontSize="16" HorizontalAlignment="Center" TextAlignment="Center"
-                       TextWrapping="Wrap" Margin="0,30,0,0"></TextBlock>
+            <TextBlock x:Name="blSimilarity" FontSize="14" HorizontalAlignment="Center" TextAlignment="Center"
+                       TextWrapping="Wrap" Margin="0,20,0,0"></TextBlock>
+            <TextBlock x:Name="blTextsStats" FontSize="14" HorizontalAlignment="Center" TextAlignment="Center"
+                       TextWrapping="Wrap" Margin="0,20,0,0"></TextBlock>
         </StackPanel>
         <Grid Grid.Column="3" Grid.Row="1" Background="Ivory">
             <Grid.ColumnDefinitions>
@@ -35,14 +35,14 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,30,0,0">
-                <TextBox x:Name="blLeftWordFrequencyStatistics" FontSize="16"
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,20,0,0">
+                <TextBox x:Name="blLeftWordFrequencyStatistics" FontSize="14"
                    TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" 
                    Background="Transparent" BorderThickness="0"></TextBox>
             </ScrollViewer>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="0,30,0,0">
-                <TextBox x:Name="blRightWordFrequencyStatistics" FontSize="16"
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="0,20,0,0">
+                <TextBox x:Name="blRightWordFrequencyStatistics" FontSize="14"
                    TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" 
                    Background="Transparent" BorderThickness="0"></TextBox>
             </ScrollViewer>

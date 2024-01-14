@@ -1,22 +1,10 @@
 ﻿Najpilniejsze:
 
 * dodać ikonki małego menu 
-
-Mniej pilne:
-
-* porównywanie linii
-* porównywanie znaków
-
-Błędy:
-
 * undo/redo tak nie przywracają po wyczyszczeniu
 
 *******************************************************************
 
-Testy:
-
-* różne wyniki dla różnych algorytmów na tym samym tekście
-* testy dla wszystkich uzywanych rozszerzeń
-
 Może:
 * dodać jakieś algorytmy jeszcze
+* pliki csv i pdf

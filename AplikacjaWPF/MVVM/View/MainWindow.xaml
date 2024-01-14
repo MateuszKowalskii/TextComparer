@@ -98,6 +98,7 @@
                         <MenuItem Name="JAVA" Header="Java" Command="{Binding HighlightCommand}" CommandParameter="4"></MenuItem>
                         <MenuItem Name="JS" Header="JavaScript" Command="{Binding HighlightCommand}" CommandParameter="5"></MenuItem>
                         <MenuItem Name="PY" Header="Python" Command="{Binding HighlightCommand}" CommandParameter="6"></MenuItem>
+                        <MenuItem Name="XML" Header="Xml" Command="{Binding HighlightCommand}" CommandParameter="7"></MenuItem>
                     </MenuItem>
                     <Separator/>
                     <MenuItem Header="Wyczyść lewe pole tekstowe" Command="{Binding ClearCommand}" CommandParameter="L"></MenuItem>
@@ -128,11 +129,11 @@
                             <Setter Property="FontSize" Value="14"/>
                         </Style>
                     </MenuItem.Resources>
-                    <MenuItem Header="Liczba znaków" Name="SignNumber" Command="{Binding ChangeModeCommand}" CommandParameter="0"></MenuItem>
-                    <MenuItem Header="Procentowo" Name="Percentage" Command="{Binding ChangeModeCommand}" CommandParameter="1" IsChecked="True"></MenuItem>
-                    <MenuItem Header="Wartość bezwzględna" Name="Absolute" Command="{Binding ChangeModeCommand}" CommandParameter="2"></MenuItem>
+                    <MenuItem Header="Procentowo" Name="Percentage" Command="{Binding ChangeModeCommand}" CommandParameter="0" IsChecked="True"></MenuItem>
+                    <MenuItem Header="Wartość bezwzględna" Name="Absolute" Command="{Binding ChangeModeCommand}" CommandParameter="1"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Zaznacz różnice"></MenuItem>
+                    <MenuItem Header="Zaznacz różnice" Command="{Binding HighlightLinesCommand}" IsCheckable="False"></MenuItem>
+                    <MenuItem Header="Wyczyść zaznaczenie różnic" Command="{Binding ClearHighlightLinesCommand}" IsCheckable="False"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Rozszerzone menu wyników" Name="AdvancedResults" Command="{Binding AdvancedResultsCommand}" IsChecked="True"></MenuItem>
                     <MenuItem Header="Wybierz ilość wyników" Name="FrequentWords" IsCheckable="False">
@@ -324,8 +325,8 @@
 
 
                 <Grid Grid.Row="1">
-                    <avalonEdit:TextEditor x:Name="leftTextBox" FontSize="13"
-                                 BorderThickness="0" WordWrap="True" ShowLineNumbers="True" Language="C">
+                    <avalonEdit:TextEditor x:Name="leftTextBox" FontSize="13" 
+                                 BorderThickness="0" WordWrap="True" ShowLineNumbers="True">
                     </avalonEdit:TextEditor>
                 </Grid>
             </Grid>

@@ -6,12 +6,14 @@ namespace Model
 {
     public static class Dale_Chall
     {
-        public static double Readibility(string text)
+        public static string Readibility(string text)
         {
-            // Obliczenie indeksu Dale-Chall
             double readibility = 0.1579 * DifficultWordsPercentage(text) + 0.0496 * WordsSentencesRatio(text);
-
-            return readibility.Round(3);
+            if (double.IsNaN(readibility))
+            {
+                return "Nie wyznaczono";
+            }
+            return readibility.Round(3).ToString();
         }
 
         static double DifficultWordsPercentage(string text)
@@ -20,7 +22,6 @@ namespace Model
 
             int difficultWordsAmount = words.Count(word => word.Length > 9);
 
-            // Oblicz procent trudnych słów
             double percentage = (double)difficultWordsAmount / words.Length * 100;
 
             return percentage;
