@@ -1,14 +1,13 @@
 ﻿using MathNet.Numerics;
 using Model;
 using Prism.Commands;
-using Prism.Mvvm;
 using System.Windows;
 using System.Windows.Controls;
 using View;
 
 namespace ViewModel
 {
-    public class ComparationExecutor : BindableBase
+    public class ComparationExecutor //: BindableBase
     {
         public DelegateCommand<string> ChangeAlgorythmCommand { get; }
         public DelegateCommand<string> ChangeModeCommand { get; }
@@ -20,7 +19,7 @@ namespace ViewModel
         public DelegateCommand HighlightLinesCommand { get; }
         public DelegateCommand ClearHighlightLinesCommand { get; }
 
-        private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenhstein };
+        private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenshtein };
         private enum Mode { Percentage, Absolute};
 
         private static int currentAlgorythm = (int)Algorythm.Jaro;
@@ -57,7 +56,7 @@ namespace ViewModel
 
         public void ChangeCurrentAlgorythm(string chosenAlgorythm)
         {
-            MenuItem[] menuItems = { mainWindow.Jaro, mainWindow.JaroWinkler, mainWindow.Jaccard, mainWindow.Levenhstein };
+            MenuItem[] menuItems = { mainWindow.Jaro, mainWindow.JaroWinkler, mainWindow.Jaccard, mainWindow.Levenshtein };
             int.TryParse(chosenAlgorythm, out currentAlgorythm);
 
             foreach (MenuItem item in menuItems)
@@ -134,7 +133,7 @@ namespace ViewModel
                     result = JaroWinkler.JaroWinklerDistance(leftString, rightString);
                 else if (currentAlgorythm == (int)Algorythm.Jaccard)
                     result = Jaccard.JaccardDistance(leftString, rightString);
-                else if (currentAlgorythm == (int)Algorythm.Levenhstein)
+                else if (currentAlgorythm == (int)Algorythm.Levenshtein)
                     result = Levenshtein.LevenshteinDistance(leftString, rightString);
 
                 result = result.Round(3);
@@ -147,9 +146,9 @@ namespace ViewModel
 
                 //Present basic results
                 if (currentMode == (int)Mode.Percentage)
-                    mainWindow.ResultsBlock.Text = "Podobieństwo\nprocentowe:\n" + (result * 100).Round(3).ToString() + "%";
+                    mainWindow.blResult.Text = "Podobieństwo\nprocentowe:\n" + (result * 100).Round(3).ToString() + "%";
                 else if (currentMode == (int)Mode.Absolute)
-                    mainWindow.ResultsBlock.Text = "Podobieństwo\nbezwzględne:\n" + result.Round(3).ToString();
+                    mainWindow.blResult.Text = "Podobieństwo\nbezwzględne:\n" + result.Round(3).ToString();
             });
 
             Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Hidden);

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Model { 
+namespace Model 
+{ 
     public static class Jaccard
     {
         public static double JaccardDistance(string firstString, string secondString)

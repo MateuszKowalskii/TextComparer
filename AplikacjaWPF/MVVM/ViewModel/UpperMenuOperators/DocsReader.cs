@@ -78,6 +78,14 @@ namespace ViewModel
                 FileInfo fileInfo = new(fileName);
                 string extension = fileInfo.Extension;
 
+                long maxSizeInBytes = 1L * 1024 * 1024 * 1024;
+                if (fileInfo.Length > maxSizeInBytes)
+                {
+                    MessageBox.Show("Plik jest zbyt duży (przekracza 1GB) i nie może być otwarty.",
+                        "Błąd otwarcia pliku", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 Application.Current.Dispatcher.Invoke(() => {
                     if (add == false) {
                         tbPath.Text = fileName;
@@ -90,13 +98,7 @@ namespace ViewModel
                     }
                 });
 
-                long maxSizeInBytes = 1L * 1024 * 1024 * 1024;
-                if (fileInfo.Length > maxSizeInBytes)
-                {
-                    MessageBox.Show("Plik jest zbyt duży (przekracza 1GB) i nie może być otwarty.",
-                        "Błąd otwarcia pliku", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+
 
                 if (extension == ".docx")
                 {

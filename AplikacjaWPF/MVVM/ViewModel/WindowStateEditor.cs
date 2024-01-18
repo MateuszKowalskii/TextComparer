@@ -1,11 +1,10 @@
-﻿using View;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Commands;
 using System.Windows;
+using View;
 
 namespace ViewModel
 {
-    public class WindowStateEditor : BindableBase
+    public class WindowStateEditor //: BindableBase
     {
         public DelegateCommand MinimizeCommand { get; }
         public DelegateCommand MaximizeCommand { get; }

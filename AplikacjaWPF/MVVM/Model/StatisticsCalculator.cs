@@ -97,7 +97,7 @@ namespace View
 
         public static string[] ExtractWords(string text)
         {
-            return  Regex.Split(text, @"\P{L}+")
+            return  Regex.Split(text, @"\W+")
                 .Where(word => !string.IsNullOrWhiteSpace(word))
                 .ToArray();
         }

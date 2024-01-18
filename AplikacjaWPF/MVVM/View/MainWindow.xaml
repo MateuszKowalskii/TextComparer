@@ -115,7 +115,7 @@
                     <MenuItem Header="Jaro" Name="Jaro" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="0" IsChecked="True"></MenuItem>
                     <MenuItem Header="Jaro-Winklera" Name="JaroWinkler" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="1"></MenuItem>
                     <MenuItem Header="Jaccarda" Name="Jaccard" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="2"></MenuItem>
-                    <MenuItem Header="Levenhsteina" Name="Levenhstein" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="3"></MenuItem>
+                    <MenuItem Header="Levenshteina" Name="Levenshtein" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="3"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Rozróżniaj małe i duże znaki" Command="{Binding IgnoreSizesCommand}"></MenuItem>
                     <MenuItem Header="Pomiń białe znaki" Command="{Binding IgnoreWhitespacesCommand}" IsChecked="True"></MenuItem>
@@ -132,8 +132,8 @@
                     <MenuItem Header="Procentowo" Name="Percentage" Command="{Binding ChangeModeCommand}" CommandParameter="0" IsChecked="True"></MenuItem>
                     <MenuItem Header="Wartość bezwzględna" Name="Absolute" Command="{Binding ChangeModeCommand}" CommandParameter="1"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="Zaznacz różnice" Command="{Binding HighlightLinesCommand}" IsCheckable="False"></MenuItem>
-                    <MenuItem Header="Wyczyść zaznaczenie różnic" Command="{Binding ClearHighlightLinesCommand}" IsCheckable="False"></MenuItem>
+                    <MenuItem Header="Zaznacz te same linie" Command="{Binding HighlightLinesCommand}" IsCheckable="False"></MenuItem>
+                    <MenuItem Header="Wyczyść zaznaczenie" Command="{Binding ClearHighlightLinesCommand}" IsCheckable="False"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Rozszerzone menu wyników" Name="AdvancedResults" Command="{Binding AdvancedResultsCommand}" IsChecked="True"></MenuItem>
                     <MenuItem Header="Wybierz ilość wyników" Name="FrequentWords" IsCheckable="False">
@@ -253,6 +253,24 @@
                         <Image Source="../../Images/lineNumbers.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
                             <Image.ToolTip>
                                 Pokaż numery lini
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="30" Height="30" Command="{Binding HighlightLinesCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/blackMarker.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Zaznacz takie same linie
+                            </Image.ToolTip>
+                        </Image>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="30" Height="30" Command="{Binding ClearHighlightLinesCommand}">
+                    <MenuItem.Header>
+                        <Image Source="../../Images/whiteMarker.png"  Stretch="Uniform" Width="15" Height="15" HorizontalAlignment="Left" >
+                            <Image.ToolTip>
+                                Wyczyść zaznaczenie
                             </Image.ToolTip>
                         </Image>
                     </MenuItem.Header>

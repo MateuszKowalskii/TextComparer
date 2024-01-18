@@ -20,7 +20,7 @@ namespace Model
         {
             string[] words = StatisticsCalculator.ExtractWords(text);
 
-            int difficultWordsAmount = words.Count(word => word.Length > 9);
+            int difficultWordsAmount = words.Count(word => word.Length > 7);
 
             double percentage = (double)difficultWordsAmount / words.Length * 100;
 

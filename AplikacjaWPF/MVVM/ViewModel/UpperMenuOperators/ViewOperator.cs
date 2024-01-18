@@ -6,7 +6,7 @@ using View;
 
 namespace ViewModel
 {
-    public class OperationsViewer : BindableBase
+    public class OperationsViewer //: BindableBase
     {
         public DelegateCommand IncreaseFontCommand { get; }
         public DelegateCommand DecreaseFontCommand { get; }
@@ -42,8 +42,8 @@ namespace ViewModel
 
         private void SwapTexts()
         {
-            (mainWindow.RightPathTextBox.Text, mainWindow.LeftPathTextBox.Text) = (mainWindow.LeftPathTextBox.Text, mainWindow.RightPathTextBox.Text);
-            (mainWindow.RightTextBox.Text, mainWindow.LeftTextBox.Text) = (mainWindow.LeftTextBox.Text, mainWindow.RightTextBox.Text);
+            (mainWindow.rightFilePath.Text, mainWindow.leftFilePath.Text) = (mainWindow.leftFilePath.Text, mainWindow.rightFilePath.Text);
+            (mainWindow.rightTextBox.Text, mainWindow.leftTextBox.Text) = (mainWindow.leftTextBox.Text, mainWindow.rightTextBox.Text);
         }
 
         private void ChangeLineNumbersVisibility()

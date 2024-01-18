@@ -1,7 +1,6 @@
 ﻿Najpilniejsze:
 
-* dodać ikonki małego menu 
-* undo/redo tak nie przywracają po wyczyszczeniu
+* testy
 
 *******************************************************************
 

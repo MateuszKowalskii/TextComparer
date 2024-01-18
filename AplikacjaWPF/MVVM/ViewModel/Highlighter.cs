@@ -1,7 +1,9 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Rendering;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
@@ -108,6 +110,11 @@ namespace ViewModel
         {
             leftTE.TextArea.TextView.BackgroundRenderers.Clear();
             rightTE.TextArea.TextView.BackgroundRenderers.Clear();
+        }
+
+        public void TextChanged([AllowNull] object sender, EventArgs e)
+        {
+            ClearColors();
         }
     }
 }

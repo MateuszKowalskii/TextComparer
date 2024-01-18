@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace Model { 
+namespace Model 
+{ 
     public static class JaroWinkler
     {
         public static double JaroDistance(string firstString, string secondString)

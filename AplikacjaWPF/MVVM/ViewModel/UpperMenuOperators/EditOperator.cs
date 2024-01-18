@@ -1,15 +1,12 @@
 ﻿using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Search;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows;
-using System.Windows.Input;
 using View;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ViewModel
 {
-    public class EditOperator : BindableBase
+    public class EditOperator //: BindableBase
     {
         public DelegateCommand CopyCommand { get; }
         public DelegateCommand DeleteCommand { get; }
