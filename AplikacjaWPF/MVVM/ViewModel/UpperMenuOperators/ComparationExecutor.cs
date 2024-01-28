@@ -7,7 +7,7 @@ using View;
 
 namespace ViewModel
 {
-    public class ComparationExecutor //: BindableBase
+    public class ComparationExecutor
     {
         public DelegateCommand<string> ChangeAlgorythmCommand { get; }
         public DelegateCommand<string> ChangeModeCommand { get; }
@@ -19,7 +19,7 @@ namespace ViewModel
         public DelegateCommand HighlightLinesCommand { get; }
         public DelegateCommand ClearHighlightLinesCommand { get; }
 
-        private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenshtein };
+        private enum Algorythm { Jaro, JaroWinkler, Jaccard, Levenshtein, NeedlemanWunsch };
         private enum Mode { Percentage, Absolute};
 
         private static int currentAlgorythm = (int)Algorythm.Jaro;
@@ -50,21 +50,23 @@ namespace ViewModel
             AdvancedResultsCommand = new DelegateCommand(ChangeAdvancedResultsMode);
 
             advancedResultsOperator = new AdvancedResultsOperator(mainWindow);
-            highlighter = new Highlighter(mainWindow);
+            highlighter = new Highlighter(mainWindow, this);
             this.mainWindow = mainWindow;
         }
 
         public void ChangeCurrentAlgorythm(string chosenAlgorythm)
         {
-            MenuItem[] menuItems = { mainWindow.Jaro, mainWindow.JaroWinkler, mainWindow.Jaccard, mainWindow.Levenshtein };
+            MenuItem[] menuItems = { mainWindow.Jaro, mainWindow.JaroWinkler, mainWindow.Jaccard, mainWindow.Levenshtein, mainWindow.NeedlemanWunsch };
             int.TryParse(chosenAlgorythm, out currentAlgorythm);
 
             foreach (MenuItem item in menuItems)
             {
                 if (item.CommandParameter.ToString() != chosenAlgorythm) item.IsChecked = false;
                 else {
-                    mainWindow.blAlgorythm.Text = "Wybrany algorytm:\n" + item.Name;
-                    if (item != mainWindow.Jaro) mainWindow.blAlgorythm.Text += "a";
+                    mainWindow.blAlgorythm.Text = "Wybrany algorytm:\n";
+                    if (item == mainWindow.NeedlemanWunsch) mainWindow.blAlgorythm.Text += "Needlemana-\nWunscha";
+                    else if (item == mainWindow.Jaro) mainWindow.blAlgorythm.Text += "Jaro";
+                    else mainWindow.blAlgorythm.Text += item.Name + "a";
                 }
             }
         }
@@ -110,34 +112,31 @@ namespace ViewModel
 
         private void ExecuteAlgorythm()
         {
-            Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Visible);
-            double result = 0;
-            Highlighter highlighter = new Highlighter(mainWindow);
+            string leftString = " ";
+            string rightString = " ";
 
             Application.Current.Dispatcher.Invoke(() =>
             {
+                mainWindow.progressBar.Visibility = Visibility.Visible;
+
                 //Preparing texts for comparasion
-                string leftString = TextPreparator.PrepareTexts(mainWindow.LeftTextBox.Text,
+                leftString = TextPreparator.PrepareTexts(mainWindow.LeftTextBox.Text,
                     differSignSizes, ignoreWhitespaces, ignorePunctation);
-                string rightString = TextPreparator.PrepareTexts(mainWindow.RightTextBox.Text,
+                rightString = TextPreparator.PrepareTexts(mainWindow.RightTextBox.Text,
                     differSignSizes, ignoreWhitespaces, ignorePunctation);
+            });
+            double result = 0;
 
-                //Calculate proper distance
-                if (string.IsNullOrEmpty(leftString) && string.IsNullOrEmpty(rightString))
-                    result = 1;
-                else if (string.IsNullOrEmpty(leftString) || string.IsNullOrEmpty(rightString))
-                    result = 0;
-                else if (currentAlgorythm == (int)Algorythm.Jaro)
-                    result = JaroWinkler.JaroDistance(leftString, rightString);
-                else if (currentAlgorythm == (int)Algorythm.JaroWinkler)
-                    result = JaroWinkler.JaroWinklerDistance(leftString, rightString);
-                else if (currentAlgorythm == (int)Algorythm.Jaccard)
-                    result = Jaccard.JaccardDistance(leftString, rightString);
-                else if (currentAlgorythm == (int)Algorythm.Levenshtein)
-                    result = Levenshtein.LevenshteinDistance(leftString, rightString);
 
-                result = result.Round(3);
 
+
+            //Calculate proper distance
+            result = ExecuteMainAgorythm(leftString,rightString);
+
+            result = result.Round(3);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
                 //Present advanced results
                 if (advancedResults == true)
                 {
@@ -152,6 +151,27 @@ namespace ViewModel
             });
 
             Application.Current.Dispatcher.Invoke(() => mainWindow.progressBar.Visibility = Visibility.Hidden);
+        }
+
+        public double ExecuteMainAgorythm(string leftString, string rightString) {
+
+            double result = 0;
+            if (string.IsNullOrEmpty(leftString) && string.IsNullOrEmpty(rightString))
+                result = 1;
+            else if (string.IsNullOrEmpty(leftString) || string.IsNullOrEmpty(rightString))
+                result = 0;
+            else if (currentAlgorythm == (int)Algorythm.Jaro)
+                result = JaroWinkler.JaroDistance(leftString, rightString);
+            else if (currentAlgorythm == (int)Algorythm.JaroWinkler)
+                result = JaroWinkler.JaroWinklerDistance(leftString, rightString);
+            else if (currentAlgorythm == (int)Algorythm.Jaccard)
+                result = Jaccard.JaccardDistance(leftString, rightString);
+            else if (currentAlgorythm == (int)Algorythm.Levenshtein)
+                result = Levenshtein.LevenshteinDistance(leftString, rightString);
+            else if (currentAlgorythm == (int)Algorythm.NeedlemanWunsch)
+                result = NeedlemanWunsch.NeedlemanWunschDistance(leftString, rightString);
+
+            return result;
         }
     }
 }

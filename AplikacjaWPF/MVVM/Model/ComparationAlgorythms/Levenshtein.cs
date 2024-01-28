@@ -27,9 +27,9 @@ namespace Model
                 {
                     if (firstString[i - 1] == secondString[j - 1]) cost = 0;
                     else cost = 1;
-                    d[i, j] = Math.Min(d[i - 1, j] + 1,  // usunięcie znaku 
-                        Math.Min(d[i, j - 1] + 1, // wstawienie znaku
-                        d[i - 1, j - 1] + cost)); // zamiana znaku na inny 
+                    d[i, j] = Math.Min(d[i - 1, j] + 1,  
+                        Math.Min(d[i, j - 1] + 1, 
+                        d[i - 1, j - 1] + cost)); 
                 }
             }
             return 1 - (double)d[m, n] / Math.Max(m, n);

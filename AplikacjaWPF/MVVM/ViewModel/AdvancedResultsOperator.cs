@@ -42,7 +42,7 @@ namespace ViewModel
                 amount = 10;
             }
 
-            mainWindow.resultsPanel.blLeftWordFrequencyStatistics.Text = "Najczęstsze wyrazy lewego tekstu:\n\n" + StatisticsCalculator.WordFrequency(firstString, amount);
+            mainWindow.resultsPanel.blLeftWordFrequencyStatistics.Text = "Najczęstsze wyrazy  lewego tekstu:\n\n" + StatisticsCalculator.WordFrequency(firstString, amount);
             mainWindow.resultsPanel.blRightWordFrequencyStatistics.Text = "Najczęstsze wyrazy prawego tekstu:\n\n" + StatisticsCalculator.WordFrequency(secondString, amount);
 
         }

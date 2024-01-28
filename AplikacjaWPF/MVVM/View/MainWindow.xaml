@@ -22,7 +22,7 @@
 
 
     <Grid Background="LightGray">
-        
+
         <!-- This grid is to eliminate default windows top window strip -->
         <Grid Height="25" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown">
             <Rectangle Fill="#124862">
@@ -116,6 +116,7 @@
                     <MenuItem Header="Jaro-Winklera" Name="JaroWinkler" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="1"></MenuItem>
                     <MenuItem Header="Jaccarda" Name="Jaccard" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="2"></MenuItem>
                     <MenuItem Header="Levenshteina" Name="Levenshtein" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="3"></MenuItem>
+                    <MenuItem Header="Needlemana-Wunscha" Name="NeedlemanWunsch" Command="{Binding ChangeAlgorythmCommand}" CommandParameter="4"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Rozróżniaj małe i duże znaki" Command="{Binding IgnoreSizesCommand}"></MenuItem>
                     <MenuItem Header="Pomiń białe znaki" Command="{Binding IgnoreWhitespacesCommand}" IsChecked="True"></MenuItem>
@@ -319,7 +320,7 @@
             <local:AdvancedResultsPanel x:Name="resultsPanel" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="3" 
                                         Panel.ZIndex="1" Visibility="Hidden">
             </local:AdvancedResultsPanel>
-            
+
             <!-- Textboxes with analysed texts -->
             <Grid Grid.Row="0" Grid.Column="1" x:Name="firstPanel">
                 <Grid.RowDefinitions>
@@ -377,5 +378,3 @@
         </Grid>
     </Grid>
 </Window>
-    
- 

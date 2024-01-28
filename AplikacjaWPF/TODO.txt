@@ -1,9 +1,0 @@
-﻿Najpilniejsze:
-
-* testy
-
-*******************************************************************
-
-Może:
-* dodać jakieś algorytmy jeszcze
-* pliki csv i pdf

@@ -89,7 +89,7 @@ namespace View
             foreach (var frequency in charFrequency.Values)
             {
                 double probability = (double)frequency / totalChars;
-                entropy -= probability * Math.Log2(probability);
+                entropy += probability * Math.Log2(1/probability);
             }
 
             return entropy.Round(3);

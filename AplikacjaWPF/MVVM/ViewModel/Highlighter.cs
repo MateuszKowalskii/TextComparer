@@ -15,54 +15,48 @@ namespace ViewModel
     {
         private readonly TextEditor leftTE;
         private readonly TextEditor rightTE;
+        private ComparationExecutor comparator;
 
-        public Highlighter(MainWindow mainWindow)
+        public Highlighter(MainWindow mainWindow, ComparationExecutor comparator)
         {
             leftTE = mainWindow.leftTextBox;
             rightTE = mainWindow.rightTextBox;
+            this.comparator = comparator;
         }
 
         public void CompareLines()
         {
+            List<string> leftLines = new();
+            List<string> rightLines = new();
+
             Application.Current.Dispatcher.Invoke(() =>
             {
                 TextDocument document1 = leftTE.Document;
                 TextDocument document2 = rightTE.Document;
+                leftLines = document1.Lines.Select(line => document1.GetText(line)).ToList();
+                rightLines = document2.Lines.Select(line => document2.GetText(line)).ToList();
+            });
 
-                // Pobierz kolekcje linii z obu dokumentów
-                List<string> leftLines = document1.Lines.Select(line => document1.GetText(line)).ToList();
-                List<string> rightLines = document2.Lines.Select(line => document2.GetText(line)).ToList();
 
-                // Porównaj linie i zaznacz różnice
                 for (int i = 0; i < leftLines.Count; i++)
                 {
                     for (int j = 0; j < rightLines.Count; j++)
                     {
-                        string leftLineWithoutSpaces = leftLines[i].Replace(" ", "");
-                        string rightLineWithoutSpaces = rightLines[j].Replace(" ", "");
-
-                        if (!string.IsNullOrWhiteSpace(leftLineWithoutSpaces)
-                            && !string.IsNullOrWhiteSpace(rightLineWithoutSpaces)) { 
-                            if (leftLines[i].Replace(" ", "") == rightLines[j].Replace(" ", "")) MarkLineSimilarity(i + 1, j + 1);
+                        if (!string.IsNullOrWhiteSpace(leftLines[i].Trim())
+                            && !string.IsNullOrWhiteSpace(rightLines[j].Trim())) {
+                            if (comparator.ExecuteMainAgorythm(leftLines[i].Trim(), rightLines[j].Trim()) > 0.8) {
+                                Application.Current.Dispatcher.Invoke(() =>
+                                {
+                                    MarkLineSimilarity(i + 1, j + 1);
+                                });
+                            } 
                         }
                     }
-
                 }
-            });
         }
 
         private void MarkLineSimilarity(int leftLineNo, int rightLineNo)
         {
-
-            if (leftLineNo < 0 || leftLineNo > leftTE.Document.LineCount)
-            {
-                return;
-            }
-            if (rightLineNo < 0 || rightLineNo > rightTE.Document.LineCount)
-            {
-                return;
-            }
-
             DocumentLine leftLine = leftTE.Document.GetLineByNumber(leftLineNo);
             DocumentLine rightLine = rightTE.Document.GetLineByNumber(rightLineNo);
 
